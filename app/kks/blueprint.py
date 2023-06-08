@@ -72,6 +72,7 @@ def index():
         return render_template('kks/searchs.html', searchs = searchs)
     if q1:
         sistema = iss.query.filter(iss.kr_name == q1).all() # test
+        print("test-Elina")
         return render_template('kks/perech_is.html', sistema = sistema)
     xs = kkss.query.filter(kkss.filial == "АУП", kkss.flag == "1").all()
     ans = kkss.query.filter(kkss.filial == "АНУ", kkss.flag == "1").all()
