@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  app:
+    build: ./app
+    container_name: app-1
+    command: gunicorn --bind 0.0.0.0:5000 main:app
+    volumes:
+      - ./app:/app
+    expose:
+      - 5000
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+  db:
+    build: ./db
+    container_name: db-1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=2RTY4356
+      - POSTGRES_DB=ktl_db
+    volumes:
+      - ./db/scripts:/data
+  nginx:
+    build: ./nginx
+    container_name: nginx-1
+    ports:
+      - 81:81
+    depends_on:
+      - app
+  
+

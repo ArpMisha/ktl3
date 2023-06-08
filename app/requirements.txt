@@ -1,0 +1,14 @@
+flask==2.2.0
+flask-sqlalchemy==3.0.2
+psycopg2-binary==2.9.3
+gunicorn==20.1.0
+flask-migrate==2.1.1
+flask-script ==2.0.5
+flask-security ==3.0.0
+flask-wtf==1.0.1
+wtforms == 2.1
+wtforms.validators==1.0.0
+email_validator==1.2.1
+pytz
+
+
