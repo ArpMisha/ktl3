@@ -9,7 +9,7 @@
 <div class = "container">
     <div class="row" id="app">
         <div class="col-12">
-            <div class="card-body">
+            <div class="card-body" v-for="task, index in tasks" :key="index">
                 <table class ="table">
                 <thead>
                     <tr>
