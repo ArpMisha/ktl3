@@ -1,11 +1,12 @@
-var app5 = new Vue({
-  el: '#app-5',
-  data: {
-    message: 'Привет, Vue.js!'
-  },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
+const { createApp } = Vue 
+
+const TaskApp = {
+  data(){
+    return {
+      task: '123'
     }
-  }
-})
+  },
+  delimiters: ['{', '}']
+}
+
+createApp(TaskApp).mount('#app')

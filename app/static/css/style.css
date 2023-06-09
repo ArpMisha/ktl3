@@ -44,3 +44,8 @@ header, footer {
     --bs-btn-disabled-bg:transparent;
     --bs-btn-disabled-border-color:var(--color2);
     --bs-gradient:none}
+
+    /* подвал */
+footer {
+    padding: 30px 0; 
+}
