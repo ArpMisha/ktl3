@@ -1,5 +1,6 @@
 from app import db
 import re
+from dataclasses import dataclass
 from datetime import datetime
 from flask_security import UserMixin, RoleMixin
 
@@ -36,8 +37,20 @@ class kkss(db.Model):
     def __init__(self, *args, **kwargs):
         super(kkss, self).__init__(*args, **kwargs)
     
-
+@dataclass
 class iss(db.Model):
+    
+    id: int
+    kr_name: str 
+    name: str  
+    kategor: str  
+    tip: str   
+    naznach: str  
+    data_vvoda: str  
+    zakazchik: str  
+    data_ib: str  
+    primech: str  
+
     id = db.Column(db.Integer, primary_key = True)
     kr_name = db.Column(db.String()) # краткое имя
     name = db.Column(db.String()) # полное имя
