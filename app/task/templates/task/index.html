@@ -9,7 +9,7 @@
 <div class = "container">
     <div class="row" id="app">
         <div class="col-12">
-            <div class="card-body" v-for="task, index in tasks" :key="index">
+            <div class="card-body">
                 <table class ="table">
                 <thead>
                     <tr>
@@ -19,7 +19,7 @@
                         <th scope="col">Тип обрабатываемой информации</th>
                     </tr>
                 </thead>
-                    <tbody>
+                    <tbody v-for="task, index in tasks" :key="index">
                         <td>{ task.kr_name }</td> 
                         <td>{ task.name }</td>
                         <td>{ task.kategor }</td>
