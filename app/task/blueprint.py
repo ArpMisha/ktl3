@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_security import login_required
 from models import kkss, iss
-from .forms import PostForm, IsForm
-import ipaddress
 from app import db
 
 
