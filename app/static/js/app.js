@@ -3,7 +3,10 @@ const { createApp } = Vue
 const TaskApp = {
   data(){
     return {
-      task: '',
+      task: {
+      'kr_name': '',
+      'name': ''
+      },
       tasks: []
     }
   },
@@ -21,6 +24,20 @@ const TaskApp = {
       this.tasks = await response.json()
     }
   },
+  async createTask() {
+    await this.getTasks()
+
+    const response = await fetch(window.location + 'create_task', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify(this.task)
+    })
+
+    await this.getTasks()
+  }
   delimiters: ['{', '}']
 }
 
