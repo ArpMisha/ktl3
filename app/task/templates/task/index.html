@@ -42,11 +42,11 @@
                         <th scope="col">Тип обрабатываемой информации</th>
                     </tr>
                 </thead>
-                    <tbody v-for="task, index in tasks" :key="index">
-                        <td>{ task.kr_name }</td> 
-                        <td>{ task.name }</td>
-                        <td>{ task.kategor }</td>
-                        <td>{ task.tip }</td>
+                    <tbody v-for="taski, index in tasks" :key="index">
+                        <td>{ taski.kr_name }</td> 
+                        <td>{ taski.name }</td>
+                        <td>{ taski.kategor }</td>
+                        <td>{ taski.tip }</td>
                     </tbody>
                 </table>
             </div>

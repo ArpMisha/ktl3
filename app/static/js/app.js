@@ -35,7 +35,6 @@ const TaskApp = {
       },
       body: JSON.stringify(this.task)
     })
-
     await this.getTasks()
   }
   delimiters: ['{', '}']
