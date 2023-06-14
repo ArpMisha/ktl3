@@ -16,9 +16,9 @@ def index():
         return jsonify(tasks)
     return render_template('task/index.html')
 
-@task.route('/create', methods=['POST'])
+@task.route('/task_create', methods=['POST'])
 @login_required
-def create():
+def task_create():
     user_input = request.get_json()
     form = IsForm(data=user_input)
     if form.validate():
