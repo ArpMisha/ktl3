@@ -26,7 +26,7 @@ def create():
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
-    return redirect(url_for('kks.index')) 
+    return redirect(url_for('task.index')) 
 
 
 
