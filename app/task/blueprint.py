@@ -18,13 +18,13 @@ def index():
     return render_template('task/index.html')
 
 
-@task.route('/create_task', methods=['POST'])
+@task.route('/create', methods=['POST'])
 @login_required
-def create_task():
+def create():
     user_input = request.get_json()
     form = IsForm(data=user_input)
     if form.validate():
-        task = models.iss(kr_name = form.kr_name.data)
+        task = models.iss(kr_name = str(form.kr_name.data))
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
