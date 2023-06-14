@@ -12,7 +12,7 @@ task = Blueprint('task', __name__, template_folder='templates')
 @task.route('/task')
 @login_required
 def index():
-    tasks = iss.query.all()
+    tasks = models.iss.query.all()
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return jsonify(tasks)
     return render_template('task/index.html')
