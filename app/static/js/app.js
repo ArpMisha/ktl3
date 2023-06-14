@@ -21,8 +21,9 @@ const TaskApp = {
           'X-Requested-With': 'XMLHttpRequest'
         } 
       })
+
       this.tasks = await response.json()
-    }
+    },
   },
   async createTask() {
     await this.getTasks()
@@ -36,7 +37,7 @@ const TaskApp = {
       body: JSON.stringify(this.task)
     })
     await this.getTasks()
-  }
+  },
   delimiters: ['{', '}']
 }
 
