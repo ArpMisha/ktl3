@@ -24,7 +24,7 @@ def create():
     user_input = request.get_json()
     form = IsForm(data=user_input)
     if form.validate():
-        task = models.iss(kr_name = str(form.kr_name.data))
+        task = models.iss(kr_name = str(form.kr_name.data), name = str(form.name.data), kategor = str(form.kategor.data), tip = str(form.tip.data))
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
