@@ -6,41 +6,40 @@
 
 {%block main%}
 <div class="container">
-    <div class="row">
+    <div class="row" id="app">
         <div class="col-lg-6">
             <div class = "card">
                 <div class="card-body">
-                  <h4 class="card-title">Добавить ИС</h4>
-                  <form @submit.prevent="createTask">
-                    <div class = "form-group col-lg-8">
-                      <label for="">Краткое наименование</label>
-                      <input type="text" class="form-control" v-model="task.kr_name">
-                    </div>
-                    <div class = "form-group col-lg-8">
-                        <label for="">Полное наименование</label>
-                        <input type="text" class="form-control" v-model="task.kr_name">
-                    </div>
-                    <div class = "form-group col-lg-8">
-                        <label for="">Категория обрабатываемой информации</label>
-                        <select v-model="task.kategor">
-                            <option>К</option>
-                            <option>КТ</option>
-                            <option>ПНд</option>
-                        </select>
-                    </div>
-                    <div class = "form-group col-lg-8">
-                        <label for="">Тип обрабатываемой информации</label>
-                        <select v-model="task.tip">
-                            <option>локальная</option>
-                            <option>корпоративная</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit">добавить ИС</button>
-                    </div>    
-                  </form>
+                    <form @submit.prevent="createTask">
+                        <div class = "form-group col-lg-8">
+                            <label for="">Краткое наименование</label>
+                            <input type="text" class="form-control" v-model="task.kr_name">
+                        </div>
+                        <div class = "form-group col-lg-8">
+                            <label for="">Полное наименование</label>
+                            <input type="text" class="form-control" v-model="task.kr_name">
+                        </div>
+                        <div class = "form-group col-lg-8">
+                            <label for="">Категория обрабатываемой информации</label>
+                            <select v-model="task.kategor">
+                                <option>К</option>
+                                <option>КТ</option>
+                                <option>ПНд</option>
+                            </select>
+                        </div>
+                        <div class = "form-group col-lg-8">
+                            <label for="">Тип обрабатываемой информации</label>
+                            <select v-model="task.tip">
+                                <option>локальная</option>
+                                <option>корпоративная</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" type="submit">добавить ИС</button>
+                        </div>    
+                    </form>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
 </div>
@@ -68,5 +67,4 @@
         </div>
     </div>
 </div>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
 {%endblock%}
