@@ -4,8 +4,7 @@ const TaskApp = {
   data(){
     return {
       task: {
-      'kr_name': '',
-      'name': ''
+      'kr_name': ''
       },
       tasks: []
     }

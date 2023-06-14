@@ -16,10 +16,6 @@
                       <label for="">Краткое наименование</label>
                       <input type="text" class="form-control" v-model="task.kr_name">
                     </div>
-                    <div class = "form-group col-lg-8">
-                      <label for="">Полное наименование</label>
-                      <input type="text" class="form-control" v-model="task.name">
-                    </div>
                     <div>
                         <button class="btn btn-primary" type="submit">добавить ИС</button>
                     </div>    
@@ -42,11 +38,11 @@
                         <th scope="col">Тип обрабатываемой информации</th>
                     </tr>
                 </thead>
-                    <tbody v-for="taski, index in tasks" :key="index">
-                        <td>{ taski.kr_name }</td> 
-                        <td>{ taski.name }</td>
-                        <td>{ taski.kategor }</td>
-                        <td>{ taski.tip }</td>
+                    <tbody v-for="task, index in tasks" :key="index">
+                        <td>{ task.kr_name }</td> 
+                        <td>{ task.name }</td>
+                        <td>{ task.kategor }</td>
+                        <td>{ task.tip }</td>
                     </tbody>
                 </table>
             </div>
