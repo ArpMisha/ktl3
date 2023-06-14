@@ -13,27 +13,28 @@ const TaskApp = {
     await this.getTasks()
   },
   methods: {
-    async sendRequest(url, method, data){
-      const myHeaders = new Headers({
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      })
-      const response = await fetch(url, {
-        method: method,
-        headers: myHeaders,
-        body: data
-      })
-      return response 
-    },
     async getTasks(){
-      const response = await fetch(window.location, 'get')
+      const response = await fetch(window.location, {
+        method: 'get',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        } 
+      })
+
       this.tasks = await response.json()
     },
-
     async createTask(){
       await this.getTasks()
-      await this.sendRequest(window.location + 'create', 'post',
-      JSON.stringify(this.task))
+  
+      const response = await fetch(window.location + 'create', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(this.task)
+      })
+
       await this.getTasks()
     }
   },
