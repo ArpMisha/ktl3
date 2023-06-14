@@ -24,7 +24,7 @@ def create_task():
     user_input = request.get_json()
     form = IsForm(data=user_input)
     if form.validate():
-        task = models.iss(kr_name=form.kr_name.data)
+        task = models.iss(kr_name = form.kr_name.data)
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
