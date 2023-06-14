@@ -8,6 +8,14 @@ from app import db
 
 task = Blueprint('task', __name__, template_folder='templates')
 
+@task.route('/task')
+@login_required
+def index():
+    tasks = models.iss.query.all()
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify(tasks)
+    return render_template('task/index.html')
+
 @task.route('/create', methods=['POST'])
 @login_required
 def create():
@@ -18,17 +26,7 @@ def create():
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
-    return redirect(url_for('kks.index'))       
-
-@task.route('/task')
-@login_required
-def index():
-    tasks = models.iss.query.all()
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        return jsonify(tasks)
-    return render_template('task/index.html')
-
-
+    return redirect(url_for('kks.index')) 
 
 
 
