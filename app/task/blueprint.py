@@ -24,10 +24,10 @@ def create_task():
     user_input = request.get_json()
     form = IsForm(data=user_input)
     if form.validate():
-        tasks = models.iss(kr_name=form.kr_name.data, name=form.name.data)
-        db.session.add(tasks)
+        task = models.iss(kr_name=form.kr_name.data, name=form.name.data)
+        db.session.add(task)
         db.session.commit()
-        return jsonify(tasks)
+        return jsonify(task)
     return redirect(url_for('task.index'))
 
 
