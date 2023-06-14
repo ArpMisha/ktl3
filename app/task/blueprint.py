@@ -18,7 +18,7 @@ def index():
     return render_template('task/index.html')
 
 
-@task.route('/task_create', methods=['POST'])
+@task.route('/create_task', methods=['POST'])
 @login_required
 def create_task():
     user_input = request.get_json()
