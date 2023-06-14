@@ -23,7 +23,7 @@ const TaskApp = {
 
       this.tasks = await response.json()
     },
-    async createTask() {
+    async createTask(){
       await this.getTasks()
   
       const response = await fetch(window.location + 'create_task', {
@@ -34,6 +34,7 @@ const TaskApp = {
         },
         body: JSON.stringify(this.task)
       })
+      
       await this.getTasks()
     }
   },
