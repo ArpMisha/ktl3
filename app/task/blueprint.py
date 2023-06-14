@@ -18,7 +18,7 @@ def create():
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
-    return redirect(url_for('task.index'))       
+    return redirect(url_for('kks.index'))       
 
 @task.route('/task')
 @login_required
