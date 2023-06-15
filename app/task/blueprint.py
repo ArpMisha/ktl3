@@ -40,7 +40,8 @@ def task_search():
         q = db.session.execute(sql)
         results = [dict(row._mapping) for row in q.fetchall()]
     else:
-        results = models.iss.query.filter(models.iss.kr_name == user_input).all()
+        return redirect(url_for('task.index')) 
+        #results = models.iss.query.filter(models.iss.kr_name == user_input).all()
     return jsonify(results)
   
 
