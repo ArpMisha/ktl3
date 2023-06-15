@@ -29,19 +29,7 @@ const TaskApp = {
 
       this.tasks = await response.json()
     },
-    async createTask(){
-      await this.getTasks()
-  
-      const response = await fetch(window.location + '_create', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(this.task)
-      })
-      await this.getTasks()
-    },
+ 
     async searchTask(){
       await this.getTasks()
 
