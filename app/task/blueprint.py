@@ -32,12 +32,9 @@ def task_create():
 @task.route('/task_search', methods=['POST'])
 @login_required
 def task_search():
-    user_input = request.get_json()
-    form = IsForm(data=user_input)
-    if form.validate():
-        q = models.iss.query.filter(models.iss.kr_name == form.kr_name.data).all()
-        return jsonify(q)
-    return redirect(url_for('task.index')) 
+    user_input = request.get_json().get('kr_name')
+    q = models.iss.query.filter(models.iss.kr_name == user_input).all()
+    return jsonify(q)
   
 
 
