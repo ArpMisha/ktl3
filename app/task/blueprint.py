@@ -4,7 +4,7 @@ import models
 from .forms import IsForm
 from app import db
 from sqlalchemy import text
-
+from datetime import date
 
 
 
@@ -35,10 +35,12 @@ def task_create():
 @login_required
 def task_search():
     user_input = request.get_json().get('kr_name')
-    sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
-    q = db.session.execute(sql)
-    results = [dict(row._mapping) for row in q.fetchall()]
-    #q = models.iss.query.filter(models.iss.kr_name == user_input).all()
+    if date.today().weekday() == 4:
+        sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
+        q = db.session.execute(sql)
+        results = [dict(row._mapping) for row in q.fetchall()]
+    else:
+        results = models.iss.query.filter(models.iss.kr_name == user_input).all()
     return jsonify(results)
   
 
