@@ -29,6 +29,16 @@ def task_create():
     return redirect(url_for('task.index')) 
 
 
+@task.route('/task_search')
+@login_required
+def task_search():
+    user_input = request.get_json().get('kr_name')
+    q = models.iss.query.filter(models.iss.kr_name == user_input)
+    return jsonify(q)
+  
+  
+
+
 
 
    

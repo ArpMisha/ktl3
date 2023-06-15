@@ -3,6 +3,9 @@ const { createApp } = Vue
 const TaskApp = {
   data(){
     return {
+      search: {
+      'kr_name': ''
+      },
       task: {
       'kr_name': '',
       'name': '',
@@ -37,7 +40,19 @@ const TaskApp = {
         },
         body: JSON.stringify(this.task)
       })
+      await this.getTasks()
+    },
+    async searchTask(){
+      await this.getTasks()
 
+      const response = await fetch(window.location + '_search', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(this.search)
+      })
       await this.getTasks()
     }
   },

@@ -5,11 +5,12 @@
 {%endblock%}
 
 {%block main%}
-<div class="container">
-    <div class="row" id="app">
+<div class="container" id="app">
+    <div class="row">
         <div class="col-lg-6">
             <div class = "card">
                 <div class="card-body">
+                    <h4 class="card-title">Добавить ИС</h4>
                     <form @submit.prevent="createTask">
                         <div class = "form-group col-lg-8">
                             <label for="">Краткое наименование</label>
@@ -41,6 +42,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-6">
+            <div class="card-body">
+                <h4 class="card-title">Поиск ИС</h4>
+                <form @submit.prevent="searchTask">
+                    <div class = "form-group col-lg-8">
+                        <label for = "">Краткое наименование</label>
+                        <input type="text" class="form-control" v-model="search">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type ="submit">Поиск</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12">
             <div class="card-body">
                 <table class ="table">
