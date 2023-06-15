@@ -43,8 +43,6 @@ const TaskApp = {
       await this.getTasks()
     },
     async searchTask(){
-      await this.getTasks()
-
       const response = await fetch(window.location + '_search', {
         method: 'post',
         headers: {
@@ -53,6 +51,15 @@ const TaskApp = {
         },
         body: JSON.stringify(this.search)
       })
+    },
+    async NewgetTasks(){
+      const response = await fetch(window.location + '_search', {
+        method: 'get',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        } 
+      })
+      this.tasks = await response.json()
     }
   },
   delimiters: ['{', '}']
