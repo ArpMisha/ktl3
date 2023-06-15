@@ -51,6 +51,7 @@ const TaskApp = {
         },
         body: JSON.stringify(this.search)
       })
+      await this.NewgetTasks()
     },
     async NewgetTasks(){
       const response = await fetch(window.location + '_search', {
