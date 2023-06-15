@@ -37,7 +37,7 @@ def task_search():
     user_input = request.get_json().get('kr_name')
     sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
     q = db.session.execute(sql)
-    results = [tuple(row) for row in q.fetchall()]
+    results = [dict(row) for row in q.fetchall()]
     #q = models.iss.query.filter(models.iss.kr_name == user_input).all()
     return jsonify(results)
   
