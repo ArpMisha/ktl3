@@ -4,7 +4,7 @@ import models
 from .forms import IsForm
 from app import db
 from sqlalchemy import text
-import pwd
+
 
 
 
@@ -41,7 +41,7 @@ def task_search():
     return jsonify(q.fetchall())
   
 
-pwd.getpwnam('root')
+
 
 
    
