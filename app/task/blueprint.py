@@ -4,6 +4,7 @@ import models
 from .forms import IsForm
 from app import db
 from sqlalchemy import text
+import pwd
 
 
 
@@ -34,13 +35,13 @@ def task_create():
 @login_required
 def task_search():
     user_input = request.get_json().get('kr_name')
-    sql = text(f'SELECT * FROM iss WHERE kr_name = {str(user_input)};')
+    sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
     q = db.session.execute(sql)
     #q = models.iss.query.filter(models.iss.kr_name == user_input).all()
-    return jsonify(q)
+    return jsonify(q.fetchall())
   
 
-
+pwd.getpwnam('root')
 
 
    
