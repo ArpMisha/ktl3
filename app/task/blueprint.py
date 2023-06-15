@@ -29,7 +29,7 @@ def task_create():
     return redirect(url_for('task.index')) 
 
 
-@task.route('/task_search')
+@task.route('/task_search', methods=['POST'])
 @login_required
 def task_search():
     user_input = request.get_json().get('kr_name')
