@@ -26,12 +26,10 @@ const TaskApp = {
           'X-Requested-With': 'XMLHttpRequest'
         } 
       })
-
       this.tasks = await response.json()
     },
     async createTask(){
       await this.getTasks()
-  
       const response = await fetch(window.location + '_create', {
         method: 'post',
         headers: {
