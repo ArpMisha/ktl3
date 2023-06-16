@@ -35,13 +35,11 @@ def task_create():
 @login_required
 def task_search():
     user_input = request.get_json().get('kr_name')
-    if datetime.today().weekday() == 3:
-        sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
-        q = db.session.execute(sql)
-        results = [dict(row._mapping) for row in q.fetchall()]
-    else:
-        return redirect(url_for('task.index')) 
-        #results = models.iss.query.filter(models.iss.kr_name == user_input).all()
+    #if datetime.today().weekday() == 3:
+    sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")
+    q = db.session.execute(sql)
+    results = [dict(row._mapping) for row in q.fetchall()]
+    #results = models.iss.query.filter(models.iss.kr_name == user_input).all()
     return jsonify(results)
   
 
