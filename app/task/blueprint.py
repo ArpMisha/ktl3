@@ -11,7 +11,7 @@ from datetime import datetime
 task = Blueprint('task', __name__, template_folder='templates')
 
 @task.route('/task')
-@login_required
+#@login_required
 def index():
     tasks = models.iss.query.all()
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -19,7 +19,7 @@ def index():
     return render_template('task/index.html')
 
 @task.route('/task_create', methods=['POST'])
-@login_required
+#@login_required
 def task_create():
     user_input = request.get_json()
     form = IsForm(data=user_input)
@@ -32,7 +32,7 @@ def task_create():
 
 
 @task.route('/task_search', methods=['POST'])
-@login_required
+#@login_required
 def task_search():
     user_input = request.get_json().get('kr_name')
     #if datetime.today().weekday() == 3:
