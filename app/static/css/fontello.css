@@ -57,3 +57,10 @@
 .icon-mail:before { content: '\e800'; } /* '' */
 .icon-github-circled:before { content: '\f09b'; } /* '' */
 .icon-paper-plane-empty:before { content: '\f1d9'; } /* '' */
+
+.icon-buffer:before { content: '\e800'; } /* 'î €' */
+.icon-reply-all:before { content: '\e801'; } /* 'î ' */
+.icon-picture:before { content: '\e802'; } /* 'î ‚' */
+.icon-hash:before { content: '\f029'; } /* 'ï€©' */
+.icon-doc:before { content: '\f04a'; } /* 'ïŠ' */
+.icon-folder-open:before { content: '\f068'; } /* 'ï¨' */
