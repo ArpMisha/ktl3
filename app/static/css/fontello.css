@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?18894192');
-  src: url('../font/fontello.eot?18894192#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?18894192') format('woff2'),
-       url('../font/fontello.woff?18894192') format('woff'),
-       url('../font/fontello.ttf?18894192') format('truetype'),
-       url('../font/fontello.svg?18894192#fontello') format('svg');
+  src: url('../font/fontello.eot?29343854');
+  src: url('../font/fontello.eot?29343854#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?29343854') format('woff2'),
+       url('../font/fontello.woff?29343854') format('woff'),
+       url('../font/fontello.ttf?29343854') format('truetype'),
+       url('../font/fontello.svg?29343854#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?18894192#fontello') format('svg');
+    src: url('../font/fontello.svg?29343854#fontello') format('svg');
   }
 }
 */
@@ -54,13 +54,25 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-mail:before { content: '\e800'; } /* '' */
-.icon-github-circled:before { content: '\f09b'; } /* '' */
+.icon-buffer:before { content: '\e800'; } /* '' */
+.icon-reply-all:before { content: '\e801'; } /* '' */
+.icon-picture:before { content: '\e802'; } /* '' */
+.icon-mail:before { content: '\e803'; } /* '' */
+.icon-th-list:before { content: '\e804'; } /* '' */
+.icon-eye-off:before { content: '\e805'; } /* '' */
+.icon-cog-alt:before { content: '\e806'; } /* '' */
+.icon-block:before { content: '\e807'; } /* '' */
+.icon-resize-small:before { content: '\e808'; } /* '' */
+.icon-eyedropper:before { content: '\e809'; } /* '' */
+.icon-hash:before { content: '\f029'; } /* '' */
+.icon-doc:before { content: '\f04a'; } /* '' */
+.icon-github-circled-alt:before { content: '\f053'; } /* '' */
+.icon-folder-open:before { content: '\f068'; } /* '' */
+.icon-spinner:before { content: '\f110'; } /* '' */
+.icon-doc-inv:before { content: '\f15b'; } /* '' */
 .icon-paper-plane-empty:before { content: '\f1d9'; } /* '' */
-
-.icon-buffer:before { content: '\e800'; } /* 'î €' */
-.icon-reply-all:before { content: '\e801'; } /* 'î ' */
-.icon-picture:before { content: '\e802'; } /* 'î ‚' */
-.icon-hash:before { content: '\f029'; } /* 'ï€©' */
-.icon-doc:before { content: '\f04a'; } /* 'ïŠ' */
-.icon-folder-open:before { content: '\f068'; } /* 'ï¨' */
+.icon-share:before { content: '\f1e0'; } /* '' */
+.icon-bomb:before { content: '\f1e2'; } /* '' */
+.icon-user-secret:before { content: '\f21b'; } /* '' */
+.icon-reddit-alien:before { content: '\f281'; } /* '' */
+.icon-mixcloud:before { content: '\f289'; } /* '' */
