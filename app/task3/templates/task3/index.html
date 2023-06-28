@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title%}
+ Корпоративная сеть
+{%endblock%}
+
+{%block main%}
+<section>
+    <div class="container" id="app2">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Пои</h4>
+                    <form class="card-form" @submit.prevent="searchTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="search.kr_name">
+                            <label class="input-label">Краткое наименование</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type ="submit">Поиск</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
