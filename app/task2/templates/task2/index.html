@@ -7,9 +7,44 @@
 {%block main%}
 <section>
     <div class="container" id="app2">
-            Welcome :
-           <span v-html="task.name">
-            </span>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Поиск ИС</h4>
+                    <form class="card-form" @submit.prevent="searchTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="search.kr_name">
+                            <label class="input-label">Краткое наименование</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type ="submit">Поиск</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                    <table class ="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Краткое наименование</th>
+                            <th scope="col">Полное наименование</th>
+                            <th scope="col">Категория обрабатываемой информации</th>
+                            <th scope="col">Тип обрабатываемой информации</th>
+                        </tr>
+                    </thead>
+                        <tbody v-for="task, index in tasks" :key="index">
+                            <td v-html="task.kr_name"></td> 
+                            <td v-html="task.name"></td>
+                            <td v-html="task.kategor"></td>
+                            <td v-html="task.tip"></td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <script src="{{url_for('static', filename='js/app2.js')}}"></script>

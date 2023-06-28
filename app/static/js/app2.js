@@ -3,25 +3,24 @@ const { createApp } = Vue
 const TaskApp = {
   data(){
     return {
-      task: {
-        'name': '<a onmouseover=alert(document.cookie)>click me!</a>'
-        },
+      search: {
+      'kr_name': ''
+      },
+      tasks: []
     }
   },
-  async created(){
-    await this.getTasks()
-  },
   methods: {
-    async getTasks(){
-      const response = await fetch(window.location, {
-        method: 'get',
+    async searchTask(){
+      const response = await fetch(window.location + '_search', {
+        method: 'post',
         headers: {
+          'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
-        } 
+        },
+        body: JSON.stringify(this.search)
       })
       this.tasks = await response.json()
-    },
-
+    }
   },
   delimiters: ['{', '}']
 }
