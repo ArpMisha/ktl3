@@ -6,10 +6,29 @@
 
 {%block main%}
 <section>
-    <div class="container" id="app2">
+    <div class="container" id="app3">
         <div class="row">
-            <a>{{resualt}}</a>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Консоль</h4>
+                    <form class="card-form" @submit.prevent="searchTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="search.name">
+                            <label class="input-label">Введите команду</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type ="submit">Запрос</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a v-html="info.kr_name"></a>
+            </div>
         </div>
     </div>
 </section>
+<script src="{{url_for('static', filename='js/app3.js')}}"></script>
 {%endblock%}
