@@ -26,14 +26,14 @@
                                 <option>КТ</option>
                                 <option>ПНд</option>
                             </select>
-                            <label class = "input-label" for="">Категория обрабатываемой информации</label>
+                            <label class = "input-label">Категория обрабатываемой информации</label>
                         </div>
                         <div class = "input">
                             <select v-model="task.tip">
                                 <option>локальная</option>
                                 <option>корпоративная</option>
                             </select>
-                            <label class = "input-label" for="">Тип обрабатываемой информации</label>
+                            <label class = "input-label">Тип обрабатываемой информации</label>
                         </div>
                         <div class="action">
                             <button class="action-button" type="submit">добавить</button>
@@ -42,19 +42,17 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-5">
-                <div class = "card">
-                    <div class="card-body">
-                        <h4 class="text-center">Поиск ИС</h4>
-                        <form @submit.prevent="searchTask">
-                            <div class = "form-group col-lg-8">
-                                <label for = "">Краткое наименование</label>
-                                <input type="text" class="form-control" v-model="search.kr_name">
-                            </div>
-                            <div>
-                                <button class="btn btn-itd btn-lg text-uppercase" type ="submit">Поиск</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class = "card-search">
+                    <h4 class="text-center">Поиск ИС</h4>
+                    <form class="card-form" @submit.prevent="searchTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="search.kr_name">
+                            <label class="input-label">Краткое наименование</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type ="submit">Поиск</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
