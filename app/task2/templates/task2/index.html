@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block title%}
+ Корпоративная сеть
+{%endblock%}
+
+{%block main%}
+<section>
+    <div class="container" id="app2">
+            Welcome :
+           <span v-html="attack">
+            </span>
+    </div>
+</section>
+<script src="{{url_for('static', filename='js/app2.js')}}"></script>
+{%endblock%}
