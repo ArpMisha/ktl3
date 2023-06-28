@@ -9,7 +9,7 @@ from datetime import datetime
 
 task2 = Blueprint('task2', __name__, template_folder='templates')
 
-@task.route('/task2')
+@task2.route('/task2')
 #@login_required
 def index():
     return render_template('task2/index.html')
