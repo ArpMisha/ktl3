@@ -19,7 +19,7 @@ def index():
 #@login_required
 def task3_search():
     user_input = request.get_json().get('name')
-    cmd = 'cat' + user_input
+    cmd = 'cat' + " " + user_input
     results = subprocess.check_output(cmd, shell=True)
     d = {"info": results}
     return jsonify(d)
