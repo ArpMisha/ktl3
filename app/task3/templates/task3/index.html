@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <a v-html="info.kr_name"></a>
+            <div class="col-12" v-for="task, index in tasks" :key="index">
+                <a v-html="task.info"></a>
             </div>
         </div>
     </div>
