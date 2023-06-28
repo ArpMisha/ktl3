@@ -16,8 +16,8 @@ def index():
     hostname = request.values.get(hostname)
     cmd = 'nslookup ' + hostname
     resualt = subprocess.check_output(cmd, shell=True)
-    #return subprocess.check_output(cmd, shell=True)
-    return render_template('task3/index.html', resualt=resualt)
+    return subprocess.check_output(cmd, shell=True)
+    #return render_template('task3/index.html', resualt=resualt)
 
 
 
