@@ -3,7 +3,9 @@ const { createApp } = Vue
 const TaskApp = {
   data(){
     return {
-      attack: '<a onmouseover=alert(document.cookie)>click me!</a>'
+      task: {
+        'name': '<a onmouseover=alert(document.cookie)>click me!</a>'
+        },
     }
   },
   async created(){
