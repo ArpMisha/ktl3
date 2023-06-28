@@ -8,10 +8,10 @@
 <section>
     <div class="container" id="app">
         <div class="row">
-            <div class="col-lg-6">
-                <div class = "card">
+            <div class="col-lg-6 mb-5">
+                <div class = "card-search">
                     <div class="card-body">
-                        <h4 class="card-title">Добавить ИС</h4>
+                        <h4 class="text-center">Добавить ИС</h4>
                         <form @submit.prevent="createTask">
                             <div class = "form-group col-lg-8">
                                 <label for="">Краткое наименование</label>
@@ -37,23 +37,23 @@
                                 </select>
                             </div>
                             <div>
-                                <button class="btn btn-primary" type="submit">добавить ИС</button>
+                                <button class="btn btn-itd btn-lg text-uppercase" type="submit">добавить ИС</button>
                             </div>    
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 mb-5">
                 <div class = "card">
                     <div class="card-body">
-                        <h4 class="card-title">Поиск ИС</h4>
+                        <h4 class="text-center">Поиск ИС</h4>
                         <form @submit.prevent="searchTask">
                             <div class = "form-group col-lg-8">
                                 <label for = "">Краткое наименование</label>
                                 <input type="text" class="form-control" v-model="search.kr_name">
                             </div>
                             <div>
-                                <button class="btn btn-primary" type ="submit">Поиск</button>
+                                <button class="btn btn-itd btn-lg text-uppercase" type ="submit">Поиск</button>
                             </div>
                         </form>
                     </div>
