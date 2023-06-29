@@ -24,8 +24,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12" v-for="task, index in tasks" :key="index">
-                <a v-html="task.info"></a>
+            <div class="col-12">
+                <table class ="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Вывод команды</th>
+                        </tr>
+                    </thead>
+                        <tbody v-for="task, index in tasks" :key="index">
+                            <td v-html="task.info"></td> 
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
