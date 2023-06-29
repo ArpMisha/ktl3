@@ -6,7 +6,7 @@ const TaskApp = {
       search: {
       'name': ''
       },
-      tasks: []
+      tasks: {}
     }
   },
   methods: {
