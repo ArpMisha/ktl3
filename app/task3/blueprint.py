@@ -21,7 +21,7 @@ def task3_search():
     user_input = request.get_json().get('name')
     cmd = 'cat' + " " + user_input
     results = subprocess.check_output(cmd, shell=True)
-    str_res = str(results).replace("\n", " ")
+    str_res = str(results).replace("\\n", "\n")
     d = {"info": str(results)}
     return jsonify(d)
 
