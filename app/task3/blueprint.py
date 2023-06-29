@@ -22,7 +22,7 @@ def task3_search():
     cmd = 'cat' + " " + user_input
     results = subprocess.check_output(cmd, shell=True)
     str_res = str(results).replace("\\n", "\n")
-    d = {"info": str(results)}
+    d = {"info": str_res}
     return jsonify(d)
 
 
