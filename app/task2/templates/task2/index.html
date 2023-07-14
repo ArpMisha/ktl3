@@ -22,6 +22,39 @@
                     </form>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Добавить ИС</h4>
+                    <form class="card-form" @submit.prevent="createTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="task.kr_name">
+                            <label class = "input-label">Краткое наименование</label>
+                        </div>
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="task.name">
+                            <label class = "input-label" for="">Полное наименование</label>
+                        </div>
+                        <div class = "input">
+                            <select v-model="task.kategor">
+                                <option>К</option>
+                                <option>КТ</option>
+                                <option>ПНд</option>
+                            </select>
+                            <label class = "input-label">Категория обрабатываемой информации</label>
+                        </div>
+                        <div class = "input">
+                            <select v-model="task.tip">
+                                <option>локальная</option>
+                                <option>корпоративная</option>
+                            </select>
+                            <label class = "input-label">Тип обрабатываемой информации</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type="submit">добавить</button>
+                        </div>    
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-12">

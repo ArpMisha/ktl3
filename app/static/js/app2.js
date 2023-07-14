@@ -6,6 +6,12 @@ const TaskApp = {
       search: {
       'kr_name': ''
       },
+      task: {
+        'kr_name': '',
+        'name': '',
+        'kategor': '',
+        'tip': ''
+        },
       tasks: []
     }
   },
@@ -20,6 +26,16 @@ const TaskApp = {
         body: JSON.stringify(this.search)
       })
       this.tasks = await response.json()
+    },
+    async createTask(){
+      const response = await fetch(window.location + '_create', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(this.task)
+      })
     }
   },
   delimiters: ['{', '}']
