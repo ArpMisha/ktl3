@@ -11,8 +11,6 @@ services:
       - 5000
     depends_on:
       - db
-    ports:
-      - "5000:5000"
   db:
     build: ./db
     container_name: db-1
