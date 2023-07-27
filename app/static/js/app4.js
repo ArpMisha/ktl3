@@ -3,9 +3,7 @@ const { createApp } = Vue
 const TaskApp = {
   data(){
     return {
-      username: {
-      'sername': ''
-      },
+      username: {},
     }
   },
   async created(){
@@ -22,8 +20,8 @@ const TaskApp = {
       this.tasks = await response.json()
     },
     },
-  },
-  delimiters: ['{', '}']
-}
+    delimiters: ['{', '}']
+  }
+  
 
-createApp(TaskApp).mount('#app')
+createApp(TaskApp).mount('#app4')
