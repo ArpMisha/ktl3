@@ -9,9 +9,34 @@
     <div class="container" id="app4">
         <div class="row">
             <div class="col-12">
-                <h4>{ tasks.username }</h4>
+                <h4>Вы авторизаваны как пользователь - { tasks.username }</h4>
+            </div>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Для удаленияя текущего пользователя нажмите кнопку</h4>
+                    <button class="action-button" type ="submit" @click="deleteTask(tasks)">Запрос</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Добавить пользователя</h4>
+                    <form class="card-form" @submit.prevent="createTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="user.email">
+                            <label class = "input-label">Login</label>
+                        </div>
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="user.password">
+                            <label class = "input-label" for="">Password</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type="submit">Добавить</button>
+                        </div>    
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="row"></div>
     </div>
 </section>
 <script src="{{url_for('static', filename='js/app4.js')}}"></script>
