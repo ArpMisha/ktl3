@@ -27,7 +27,7 @@ def delete_user():
     return jsonify({'result': 'Ok'}), 200
 
 
-@task4.route('/task4_create')
+@task4.route('/task4_create', methods=['POST'])
 #@login_required
 def create_user():
     user_input = request.get_json()
