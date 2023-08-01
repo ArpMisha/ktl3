@@ -21,7 +21,7 @@ def index():
 #@login_required
 def delete_user():
     username = request.get_json().get('username')
-    users = models.User.query.filter(email=username).first()
+    users = models.User.query.filter(models.User.email==username).first()
     db.session.delete(users)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
