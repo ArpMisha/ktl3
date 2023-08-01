@@ -7,8 +7,7 @@ const TaskApp = {
       user: {
         'email': '',
         'password': ''
-        },
-        taskss: []
+        }
     }
   },
   async created(){
@@ -25,6 +24,7 @@ const TaskApp = {
       this.tasks = await response.json()
     },
     async createTask(){
+      await this.getTasks()
       const response = await fetch(window.location + '_create', {
         method: 'post',
         headers: {
@@ -33,7 +33,7 @@ const TaskApp = {
         },
         body: JSON.stringify(this.user)
       })
-      this.tasks = await response.json()
+      await this.getTasks()
     },
     async deleteTask(){
       const response = await fetch(window.location + '_delete', {
