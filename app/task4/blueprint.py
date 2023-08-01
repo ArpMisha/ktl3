@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
 import models 
-from app import db
+from app import db, user_datastore
 from sqlalchemy import text
 from .forms import UserForm
 
@@ -33,10 +33,9 @@ def create_user():
     user_input = request.get_json()
     form = UserForm(data=user_input)
     if form.validate():
-        users = models.User(email = form.email.data, password = form.password.data)
-        db.session.add(users)
+        users = user_datastore.create_user(email=form.email.data, password=form.password.data)
         db.session.commit()
-        return jsonify(users)
+        return jsonify({'result': 'Ok'}), 200
     return redirect(url_for('task4.index')) 
 
   
