@@ -35,10 +35,12 @@
                         <span class="comment">// Код <b>v-html="task.kr_name"</b> предполагает использование Vue.js - популярного JavaScript-фреймворка для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js, и используется для вставки HTML-кода внутрь элемента.</span>
 
                         <span class="comment">-------------------------------------------</span>
-                        <td>&lt;span&gt; task.kr_name &lt;/span&gt;</td>
-                        <td>&lt;span&gt; task.name &lt;/span&gt;</td>
-                        <td>&lt;span&gt; task.kategor &lt;/span&gt;</td>
-                        <td>&lt;span&gt; task.tip &lt;/span&gt;</td>
+                        <tbody v-for="task, index in tasks" :key="index">
+                            &lt;td v-html="task.kr_name"&gt;&lt;/td&gt;
+                            <td v-html="task.name"></td>
+                            <td v-html="task.kategor"></td>
+                            <td v-html="task.tip"></td>
+                        </tbody>
                         <span class="comment">-------------------------------------------</span>
 
                         <span class="comment">// Это комментарий</span>
