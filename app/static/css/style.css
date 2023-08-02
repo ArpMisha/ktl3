@@ -74,7 +74,7 @@ footer {
     background-color: var(--color1);
     margin: 15px auto 30px;
 }
-
+/* form*/
 .card-search {
     margin: 2rem auto;
 	display: flex;
@@ -161,3 +161,42 @@ footer {
 .bg2 {
     background-color: var(--color2);
 }
+
+/* Общий стиль для блока кода */
+code {
+    display: block;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto;
+  }
+  
+  /* Оформление для отображения ключевых слов */
+  code .keyword {
+    color: #007bff; /* Цвет можно изменить на ваше усмотрение */
+  }
+  
+  /* Оформление для отображения строковых литералов */
+  code .string {
+    color: #e83e8c; /* Цвет можно изменить на ваше усмотрение */
+  }
+  
+  /* Оформление для отображения комментариев */
+  code .comment {
+    color: #6c757d; /* Цвет можно изменить на ваше усмотрение */
+  }
+  
+  /* Оформление для отображения чисел */
+  code .number {
+    color: #17a2b8; /* Цвет можно изменить на ваше усмотрение */
+  }
+  
+  /* Оформление для отображения операторов и символов */
+  code .operator,
+  code .punctuation {
+    color: #212529; /* Цвет можно изменить на ваше усмотрение */
+  }
+  
