@@ -165,7 +165,7 @@ footer {
 /* Общий стиль для блока кода */
 code {
     display: block;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     padding: 10px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
@@ -186,7 +186,7 @@ code {
   
   /* Оформление для отображения комментариев */
   code .comment {
-    color: #6c757d; /* Цвет можно изменить на ваше усмотрение */
+    color: #6b747b; /* Цвет можно изменить на ваше усмотрение */
   }
   
   /* Оформление для отображения чисел */
