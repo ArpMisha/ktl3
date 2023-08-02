@@ -35,14 +35,12 @@
                         <span class="comment">// Код <b>v-html="task.kr_name"</b> предполагает использование Vue.js - популярного JavaScript-фреймворка для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js, и используется для вставки HTML-кода внутрь элемента.</span>
 
                         <span class="comment">-------------------------------------------</span>
-                        <span class="keyword"><tbody</span> <span class="string">v-for="task, index in tasks" :key="index"</span><span class="keyword"></span>></span>
-                        <span class="keyword"><td</span> <span class="string">v-html="task.kr_name"</span><span class="keyword">></td></span> 
-                        <span class="keyword"><td</span> <span class="string">v-html="task.name"</span><span class="keyword">></td></span> 
-                        <span class="keyword"><td</span> <span class="string">v-html="task.kategor"</span><span class="keyword">></td></span> 
-                        <span class="keyword"><td</span> <span class="string">v-html="task.tip"</span><span class="keyword">></td></span> 
-                        <span class="keyword"></tbody></span>
+                        <td>&lt;span&gt;{{ task.kr_name }}&lt;/span&gt;</td>
+                        <td>&lt;span&gt;{{ task.name }}&lt;/span&gt;</td>
+                        <td>&lt;span&gt;{{ task.kategor }}&lt;/span&gt;</td>
+                        <td>&lt;span&gt;{{ task.tip }}&lt;/span&gt;</td>
                         <span class="comment">-------------------------------------------</span>
-                        
+
                         <span class="comment">// Это комментарий</span>
                         <span class="number">console.log</span>(<span class="string">'Hello, World!'</span>);
                         
