@@ -32,14 +32,16 @@
                 <pre>
                     <code>
                         <span class="comment">// В части кода ниже представлена уязвимость типа Stored (постоянный) XSS.</span>
-                        <span class="comment">// Код <b>v-html="task.kr_name"</b> предполагает использование Vue.js - популярного JavaScript-фреймворка для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js, и используется для вставки HTML-кода внутрь элемента.</span>
+                        <span class="comment">// Код <b>&lt;td v-html="task.kr_name"&gt;&lt;/td&gt;</b> предполагает использование Vue.js - популярного JavaScript-фреймворка
+                             для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js,
+                              и используется для вставки HTML-кода внутрь элемента.</span>
 
                         <span class="comment">-------------------------------------------</span>
-                        <tbody v-for="task, index in tasks" :key="index">
+                        &lt;tbody v-for="task, index in tasks" :key="index"&gt;
                             &lt;td v-html="task.kr_name"&gt;&lt;/td&gt;
-                            <td v-html="task.name"></td>
-                            <td v-html="task.kategor"></td>
-                            <td v-html="task.tip"></td>
+                            &lt;td v-html="task.name"&gt;&lt;/td&gt;
+                            &lt;td v-html="task.kategor"&gt;&lt;/td&gt;
+                            &lt;td v-html="task.tip"&gt;&lt;/td&gt;
                         </tbody>
                         <span class="comment">-------------------------------------------</span>
 
