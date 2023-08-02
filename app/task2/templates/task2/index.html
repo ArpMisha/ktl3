@@ -33,8 +33,8 @@
                     <code>
                         <span class="comment">// В части кода ниже представлена уязвимость типа Stored (постоянный) XSS.</span>
                         <span class="comment">// Код <b>&lt;td v-html="task.kr_name"&gt;&lt;/td&gt;</b> предполагает использование Vue.js - популярного JavaScript-фреймворка
-                             для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js,
-                              и используется для вставки HTML-кода внутрь элемента.</span>
+                        для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, которая является одной из особенностей Vue.js,
+                        используется для вставки HTML-кода внутрь элемента.</span>
 
                         <span class="comment">-------------------------------------------</span>
                         &lt;tbody v-for="task, index in tasks" :key="index"&gt;
@@ -42,11 +42,18 @@
                             &lt;td v-html="task.name"&gt;&lt;/td&gt;
                             &lt;td v-html="task.kategor"&gt;&lt;/td&gt;
                             &lt;td v-html="task.tip"&gt;&lt;/td&gt;
-                        </tbody>
+                        &lt;/tbody&gt;
                         <span class="comment">-------------------------------------------</span>
+                        <span class="comment">Давайте разберем этот код по частям:</span>
+                        <span class="comment"><b>ч&lt;td&gt;</b>: Это элемент HTML, представляющий ячейку таблицы (table cell).</span>
+                        <span class="comment"><b>v-html="task.kr_name":</b> Это Vue.js директива v-html, которая связывает содержимое ячейки (&lt;td&gt;) 
+                        с выражением task.kr_name. task.kr_name предполагается, что это переменная из объекта task, 
+                        содержащая некоторый HTML-код.</span>
 
-                        <span class="comment">// Это комментарий</span>
-                        <span class="number">console.log</span>(<span class="string">'Hello, World!'</span>);
+                        <span class="comment">Суть этого кода заключается в том, что содержимое ячейки будет установлено в HTML-код, 
+                        который содержится в переменной task.kr_name. Однако, необходимо быть осторожным при использовании v-html, 
+                        так как это может представлять уязвимость XSS, если переменная <b>task.kr_name</b> содержит ненадежный или 
+                        несанитарный HTML-код.</span>
                         
                     </code>
                 </pre>  
