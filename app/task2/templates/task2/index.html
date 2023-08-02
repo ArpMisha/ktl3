@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color1 mb-5">Описание уязвимости Cross Site Scripting (XSS)</h2>
+                <h2 class="text-center text-uppercase color2 mb-5">Описание уязвимости Cross Site Scripting (XSS)</h2>
             </div>
         </div>
         <div class="row">
@@ -74,16 +74,18 @@
     <div class="container" id="app2">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color2 mb-5">Пример уязвимости Cross Site Scripting (XSS)</h2>
+                <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости Cross Site Scripting (XSS)</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <pre>
-                    <code>
-                        <span class="keyword">Для эксплуатации уязвимости необходимо в одно из полей форм добавить ссылку <b>&lt;а&gt; с уязвимый js кодом <b>&lt;a onmouseover=alert(document.cookie)&gt;click me!&lt;/a&gt;</b></span>
-                        <span class="keyword">При наведении мышки пользователя сайта, реализуемое атрибутом "onmouseover" будет вызывана функцию alert(), 
-                        которая выводит содержимое cookie (куки) текущей страницы во всплывающем окне предупреждения.</span>
+                    <code style="background-color: #c8c8c8">
+                        <span class="keyword">Для эксплуатации уязвимости необходимо создать ИС и в одно из полей форм ("Полное наименование") добавить ссылку <b>&lt;а&gt;</b>  с уязвимый js кодом 
+                        <b>&lt;a onmouseover=alert(document.cookie)&gt;click me!&lt;/a&gt;</b>, также укажите "Краткое наименование", например <b>1С</b> для быстрого поиска ИС</span>
+
+                        <span class="keyword">При наведении мышки пользователя сайта, реализуемое атрибутом <b>onmouseover</b> будет вызывана функцию <b><alert()</b>, 
+                        которая выводит содержимое <b>cookie (куки)</b> текущей страницы во всплывающем окне предупреждения.</span>
                     </code>
                 </pre>
             </div>
