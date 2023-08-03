@@ -35,13 +35,13 @@
                         <span class="comment">-------------------------------------------</span>
                         <span class="comment">В части кода ниже представлена уязвимость типа <b>SQL-injection</b></span>
                         <span class="comment">-------------------------------------------</span>
-                            @task.route('/task_search', methods=['POST'])
+                        <span class="keyword">@task.route('/task_search', methods=['POST'])
                             def task_search():
                                 user_input = request.get_json().get('kr_name')  <span class="comment">// считываем введенное пользователем значение в переменную</span>
                                 sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")   <span class="comment">// формируем запрос в базу данных iss подставляя введенное пользователем значение</span>
                                 q = db.session.execute(sql) <span class="comment"></span> <span class="comment">// делаем запрос в БД</span>
                                 results = [dict(row._mapping) for row in q.fetchall()]
-                                return jsonify(results) <span class="comment">// возвращаем результат в веб-интерфейс</span>
+                                return jsonify(results) <span class="comment">// возвращаем результат в веб-интерфейс</span></span>
                         <span class="comment">-------------------------------------------</span>    
                         <span class="comment">Фрагмент этого кода реализован в примере ниже</span>
                         <span class="comment">-------------------------------------------</span>                
