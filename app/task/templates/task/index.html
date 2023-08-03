@@ -33,17 +33,15 @@
                 <pre>
                     <code>
                         <span class="comment">-------------------------------------------</span>
-                        <span class="comment">В части кода ниже представлена уязвимость типа <b>Stored (постоянный) XSS.</b></span>
+                        <span class="comment">В части кода ниже представлена уязвимость типа <b>SQL-injection</b></span>
                         <span class="comment">-------------------------------------------</span>
-                        &lt;tbody v-for="task, index in tasks" :key="index"&gt;
-                            &lt;td v-html="task.kr_name"&gt;&lt;/td&gt;
-                            &lt;td v-html="task.name"&gt;&lt;/td&gt;
-                            &lt;td v-html="task.kategor"&gt;&lt;/td&gt;
-                            &lt;td v-html="task.tip"&gt;&lt;/td&gt;
-                        &lt;/tbody&gt;
-                        <span class="comment">-------------------------------------------</span>
-                        
-                        
+                            @task.route('/task_search', methods=['POST'])
+                            def task_search():
+                                user_input = request.get_json().get('kr_name')  <span class="comment">// считываем введенное пользователем значение в переменную</span>
+                                sql = text(f"SELECT * FROM iss WHERE kr_name = '{str(user_input)}';")   <span class="comment">// формируем запрос в базу данных iss подставляя введенное пользователем значение</span>
+                                q = db.session.execute(sql) <span class="comment"></span> <span class="comment">// делаем запрос в БД</span>
+                                results = [dict(row._mapping) for row in q.fetchall()]
+                                return jsonify(results) <span class="comment">// возвращаем результат в веб-интерфейс</span>                      
                     </code>
                 </pre>  
             </div>
@@ -55,6 +53,17 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости SQL-injection</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <pre>
+                    <code style="background-color: #eee;">
+                        <span class="keyword">Для эксплуатации уязвимости необходимо сделать запрос в таблицу через форму поиска ""</span>
+
+
+                    </code>
+                </pre>
             </div>
         </div>
         <div class="row">
