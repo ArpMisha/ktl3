@@ -38,6 +38,12 @@ def create_user():
         return jsonify({'result': 'Ok'}), 200
     return redirect(url_for('task4.index')) 
 
+
+@task4.route('/task4_test')
+@login_required
+def index2():
+    return render_template('task4/index2.html')
+
   
 
 
