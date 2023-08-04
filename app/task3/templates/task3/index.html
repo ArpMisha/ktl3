@@ -18,9 +18,9 @@
                 <p>Процесс, который приводит к Command Injection, часто связан с использованием неправильной конкатенации или непроверенного выполнения команд. Когда приложение не адекватно обрабатывает пользовательский ввод, злоумышленник может вводить специально сконструированные строки, содержащие команды операционной системы, метасимволы или управляющие последовательности.</p>
                 <p><b>Пример уязвимости</b> Command Injection:</p>
                 <p>Допустим, у вас есть веб-приложение, которое выполняет команду операционной системы через функцию <b>subprocess.check_output()</b>, и оно использует пользовательский ввод без проверки:</p>
-                <code><span class="keyword">user_input = request.get_json().get('name')
-                    cmd = 'cat' + " " + user_input
-                    results = subprocess.check_output(cmd, shell=True)</span></code>
+                <code><span class="keyword">user_input = request.get_json().get('name')</span>
+                    <span class="keyword">cmd = 'cat' + " " + user_input</span>
+                    <span class="keyword">results = subprocess.check_output(cmd, shell=True)</span></code>
                 <p>Если злоумышленник отправит следующий JSON-запрос:</p>
                 <code>{"name": "file.txt; ls"}</code>
                 <p>То команда, которая будет выполнена на сервере, выглядит следующим образом:</p>
@@ -62,7 +62,21 @@
             <div class="col-12">
                 <pre>
                     <code style="background-color: #eee;">
-                        <span class="keyword">Для эксплуатации уязвимости необходимо</span>
+                        <span class="keyword">Ниже реализован код из примера выше.</span>
+                        <span class="keyword">Допустим у программиста или DevOps-инженера есть задача через REST-API проверять список компонет,
+                         которые лежат в контейнере. Для решения этой задачи была написана функция, которая получая название файла <b>requirements.txt</b>
+                         должна возвращать список компонент. Но при написании функции программист не реализовал проверку пользовательского ввода,
+                         что позволяет реализовать уязвимость типа Command Injection</span>
+                        
+                         <span class="keyword">Введите следующие команды</span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="string"><b>requirements.txt</b></span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="string"><b>requirements.txt ; ls</b></span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="string"><b>f ; cat /etc/passwd</b></span>
+                        <span class="comment">-------------------------------------------</span>
+                         
                     </code>
                 </pre>
             </div>
