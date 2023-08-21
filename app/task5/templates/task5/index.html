@@ -1,0 +1,84 @@
+{%extends 'base.html'%}
+
+{%block title%}
+ Корпоративная сеть
+{%endblock%}
+
+{%block main%}
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center text-uppercase color1 mb-5">Описание уязвимости CSRF</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>CSRF</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container" id="app4">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости CSRF</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <pre>
+                    <code style="background-color: #eee;">
+                        <span class="keyword">Ниже приведен код для реализации уязвимости Clickjacking  </span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="keyword">&lt;iframe&gt; (Inline Frame) - это HTML-элемент, который используется для вставки веб-страницы или другого документа
+                        внутри текущего документа. Он позволяет встраивать веб-контент, такой как другие веб-страницы, видео, карты и т.д., 
+                        прямо в вашу страницу.</span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="keyword">Мы создадим другую страницу с завлекающим контентом, а в &lt;iframe&gt; укажем ссылку на нашу страницу <b>URI=/test4</b></span>
+                        <span class="keyword">Ниже представлен код "обманной" страницы</span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="string">&lt;iframe <b>src="http://10.10.102.119:81/task4"</b>&lt;/iframe&gt; <span class="comment">// в iframe указана ссылка на страницу жертву</span>
+                        &lt;button&gt;<span class="keyword">Click to Win</span>&lt;/button&gt;</span> <span class="comment">// обманная кнопка, реализующая удаление пользователя</span>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="keyword">Нажмите на кнопку, чтобы посмотреть как реализуется код выше. 
+                        Уточнение - в этом коде не представлены стили css, которые реализуют прозрачность страницы</span>
+                        <span class="comment">-------------------------------------------</span>
+                        <a href="{{url_for('task4.index2')}}">Пример</a>
+                        <span class="comment">-------------------------------------------</span>
+                         
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4>Вы авторизаваны как пользователь - { tasks.username }</h4>
+            </div>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Поменять пароль пользователя</h4>
+                    <form class="card-form" @submit.prevent="createTask">
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="user.email">
+                            <label class = "input-label">Login</label>
+                        </div>
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="user.password">
+                            <label class = "input-label" for="">Password</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type="submit">Добавить</button>
+                        </div>    
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+    </div>
+</section>
+<script src="{{url_for('static', filename='js/app5.js')}}"></script>
+{%endblock%}
