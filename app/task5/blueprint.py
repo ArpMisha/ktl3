@@ -28,7 +28,7 @@ def change_password():
     user = user_datastore.get_user(username)
     if user:
         # Обновление пароля пользователя
-        user.password = security.hash_password(new_password)
+        user.password = user_datastore.hash_password(new_password)  
         db.session.commit()
         return jsonify({'result': 'Ok'}), 200
 
