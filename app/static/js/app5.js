@@ -6,7 +6,7 @@ const TaskApp = {
       tasks: {},
       user: {
         'email': '',
-        'password': ''
+        'new_password': ''
         }
     }
   },

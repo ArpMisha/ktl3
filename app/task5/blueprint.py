@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
 import models 
-from app import db, user_datastore
+from app import db, user_datastore, security
 from sqlalchemy import text
 from .forms import UserForm
 
@@ -17,6 +17,27 @@ def index():
     return render_template('task5/index.html')
 
  
+
+
+@task5.route('/task5_create', methods=['POST'])
+@login_required
+def change_password():
+    data = request.get_json()
+    username = data.get('email')
+    new_password = data.get('new_password')
+    user = user_datastore.get_user(username)
+    if user:
+        # Обновление пароля пользователя
+        user.password = security.hash_password(new_password)
+        db.session.commit()
+        return jsonify({'result': 'Ok'}), 200
+
+
+    
+
+  
+
+
 
 
 

@@ -18,7 +18,7 @@ def index():
 
 
 @task4.route('/task4_delete', methods=['POST'])
-#@login_required
+@login_required
 def delete_user():
     username = request.get_json().get('username')
     users = models.User.query.filter(models.User.email==username).first()
@@ -40,7 +40,7 @@ def create_user():
 
 
 @task4.route('/task4_test')
-@login_required
+#@login_required
 def index2():
     return render_template('task4/index2.html')
 
