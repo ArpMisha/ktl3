@@ -29,6 +29,7 @@ def change_password():
     #if form.validate():
     user = user_datastore.get_user(current_user.id)
     user.password = hash_password(form.password.data)
+    user_datastore.put(user)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
 
