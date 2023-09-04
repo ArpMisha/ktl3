@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
-from flask_security.utils import hash_password
+from flask_security.forms import ChangePasswordForm
 import models 
 from app import db, user_datastore
 from sqlalchemy import text
@@ -24,11 +24,12 @@ def index():
 @task5.route('/task5_create', methods=['POST'])
 @login_required
 def change_password():
-    user_input = request.get_json()
-    form = UserForm(data=user_input)
+    #user_input = request.get_json()
+    form = ChangePasswordForm()
+    current_user.set_password(form.new_password.data)
     #if form.validate():
-    user = user_datastore.get_user(current_user.id)
-    user.password = form.password.data
+    #user = user_datastore.get_user(current_user.id)
+    #user.password = hash_password(form.password.data)
     #user_datastore.put(user)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
