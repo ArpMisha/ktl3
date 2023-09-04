@@ -1,11 +1,8 @@
-from wtforms import Form, SelectField, StringField
-from wtforms.validators import IPAddress, DataRequired
+from flask_security.forms import ChangePasswordForm
+from wtforms import PasswordField
 
-
-class UserForm(Form):
-    email = StringField('email', validators=[DataRequired()]) 
-    password = StringField('password', [DataRequired()]) 
-    
+class CustomChangePasswordForm(ChangePasswordForm):
+    new_password = PasswordField('New Password')
 
 
 
