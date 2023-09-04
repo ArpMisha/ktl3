@@ -5,6 +5,7 @@ from .forms import IsForm
 from app import db
 from sqlalchemy import text
 from datetime import datetime
+from .forms import UserForm
 
 
 
@@ -14,6 +15,7 @@ task = Blueprint('task', __name__, template_folder='templates')
 #@login_required
 def index():
     tasks = models.iss.query.all()
+    assert UserForm.query.all() == False
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         return jsonify(tasks)
     return render_template('task/index.html')
