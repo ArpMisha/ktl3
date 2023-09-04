@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
-from flask_security import login_required, current_user
+from flask_security import login_required, current_user,  hash_password
 import models 
 from app import db, user_datastore
 from sqlalchemy import text
@@ -27,7 +27,8 @@ def change_password():
     data = request.get_json()
     username = data.get('email')
     new_password = data.get('new_password')
-    user_datastore.update_user(username, password=new_password)
+    hashed_password = hash_password(new_password)  # Хешировать новый пароль
+    username.password = hashed_password
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
 
