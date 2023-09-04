@@ -28,7 +28,7 @@ def change_password():
     form = UserForm(data=user_input)
     #if form.validate():
     user = user_datastore.get_user(current_user.id)
-    change_user_password(user, form.new_password.data)
+    change_user_password(user, form.password.data)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
 
