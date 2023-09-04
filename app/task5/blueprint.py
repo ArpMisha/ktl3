@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
+from flask_security.changeable import change_password
 import models 
 from app import db, user_datastore
 from sqlalchemy import text
@@ -27,7 +28,7 @@ def change_password():
     form = UserForm(data=user_input)
     #if form.validate():
     user = user_datastore.get_user(current_user.id)
-    user_datastore.change_password(user, form.new_password.data)
+    change_password(user, form.new_password.data)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
 
