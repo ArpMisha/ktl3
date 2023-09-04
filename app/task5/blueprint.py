@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
 import models 
-from app import db, user_datastore, security
+from app import db, user_datastore, 
 from sqlalchemy import text
 from .forms import UserForm
+
 
 
 task5 = Blueprint('task5', __name__, template_folder='templates')
@@ -25,13 +26,9 @@ def change_password():
     data = request.get_json()
     username = data.get('email')
     new_password = data.get('new_password')
-    user = user_datastore.get_user(username)
-    if user:
-        # Обновление пароля пользователя
-
-        user.password = utils.hash_password(new_password)  # Используйте utils.hash_password
-        db.session.commit()
-        return jsonify({'result': 'Ok'}), 200
+    user_datastore.set_password(username, new_password)
+    db.session.commit()
+    return jsonify({'result': 'Ok'}), 200
 
 
     
