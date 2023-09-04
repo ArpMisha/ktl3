@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from flask_security import login_required, current_user
 import models 
-from app import db, user_datastore, 
+from app import db, user_datastore
 from sqlalchemy import text
 from .forms import UserForm
 
