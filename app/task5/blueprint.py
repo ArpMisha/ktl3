@@ -4,6 +4,7 @@ import models
 from app import db, user_datastore
 from sqlalchemy import text
 from .forms import UserForm
+from werkzeug.security import generate_password_hash
 
 
 
@@ -26,9 +27,11 @@ def change_password():
     data = request.get_json()
     username = data.get('email')
     new_password = data.get('new_password')
-    user_datastore.set_password(username, new_password)
+    user_datastore.update_user(username, password=new_password)
     db.session.commit()
     return jsonify({'result': 'Ok'}), 200
+
+
 
 
     
