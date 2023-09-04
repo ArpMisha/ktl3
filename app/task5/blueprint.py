@@ -26,7 +26,8 @@ def index():
 def change_password():
     #user_input = request.get_json()
     form = ChangePasswordForm()
-    current_user.set_password(form.new_password.data)
+    current_user.password = form.new_password.data
+    current_user.save()
     #if form.validate():
     #user = user_datastore.get_user(current_user.id)
     #user.password = hash_password(form.password.data)
