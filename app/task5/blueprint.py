@@ -23,11 +23,12 @@ def index():
 @task5.route('/task5_create', methods=['POST'])
 @login_required
 def change_password():
-    data = request.get_json()
-    username = data.get('email')
-    new_password = data.get('new_password')
-    user_datastore.set_password(username, new_password)
-    db.session.commit()
+    user_input = request.get_json()
+    form = UserForm(data=user_input)
+    if form.validate():
+        user = user_datastore.get_user(email=form.email.data)
+        user_datastore.change_password(user, form.password.data)
+        db.session.commit()
     return jsonify({'result': 'Ok'}), 200
 
 
