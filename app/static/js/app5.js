@@ -5,8 +5,9 @@ const TaskApp = {
     return {
       tasks: {},
       user: {
-        'email': '',
-        'new_password': ''
+        'name': '',
+        'surname': '',
+        'age': ''
         }
     }
   },
@@ -25,7 +26,7 @@ const TaskApp = {
     },
     async createTask(){
       await this.getTasks()
-      const response = await fetch(window.location + '_create', {
+      const response = await fetch(window.location + '_upload', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

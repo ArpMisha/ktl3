@@ -3,37 +3,36 @@ from flask_security import login_required, current_user
 from flask_security.forms import ChangePasswordForm
 import models 
 from app import db, user_datastore
-from sqlalchemy import text
-from .forms import UserForm
-
+import pickle
 
 
 task5 = Blueprint('task5', __name__, template_folder='templates')
 
 @task5.route('/task5')
-@login_required
 def index():
-    username = current_user.email
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        return jsonify({'username': username})
     return render_template('task5/index.html')
 
- 
+@task5.route('/task5_upload', methods=['POST'])
+def upload_file():
+    try:
+        # Получаем JSON-данные из веб-формы
+        data = request.get_json()
+
+        if data:
+            # Сериализуем данные с помощью pickle
+            serialized_data = pickle.dumps(data)
+            # Записываем сериализованные данные в файл
+            with open('data.pkl', 'wb') as file:
+                file.write(serialized_data)
+            # Отправляем файл обратно в веб-интерфейс
+            return send_file('data.pkl', as_attachment=True)
+        else:
+            return jsonify({'message': 'No JSON data received'})
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 
-@task5.route('/task5_create', methods=['POST'])
-@login_required
-def change_password():
-    #user_input = request.get_json()
-    form = ChangePasswordForm()
-    current_user.password = form.new_password.data
-    assert dir(current_user) == False
-    #if form.validate():
-    #user = user_datastore.get_user(current_user.id)
-    #user.password = hash_password(form.password.data)
-    #user_datastore.put(user)
-    db.session.commit()
-    return jsonify({'result': 'Ok'}), 200
 
 
 

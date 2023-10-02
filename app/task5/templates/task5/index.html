@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color1 mb-5">Описание уязвимости CSRF</h2>
+                <h2 class="text-center text-uppercase color1 mb-5">Описание проблемы использования уязвимых компонент</h2>
             </div>
         </div>
         <div class="row">
@@ -34,7 +34,7 @@
     <div class="container" id="app5">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости CSRF</h2>
+                <h2 class="text-center text-uppercase color1 mb-5">Пример использования компоненты с уязвимостью</h2>
             </div>
         </div>
         <div class="row">
@@ -55,32 +55,29 @@
                         <span class="comment">-------------------------------------------</span>
                         <span class="keyword">Нажмите на кнопку, чтобы посмотреть как реализуется код выше. 
                         Уточнение - в этом коде не представлены стили css, которые реализуют прозрачность страницы</span>
-                        <span class="comment">-------------------------------------------</span>
-                        <a href="{{url_for('task4.index2')}}">Пример</a>
-                        <span class="comment">-------------------------------------------</span>
-                         
                     </code>
                 </pre>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <h4>Вы авторизаваны как пользователь - { tasks.username }</h4>
-            </div>
             <div class="col-lg-6">
                 <div class = "card-search">
-                    <h4 class="text-center">Поменять пароль пользователя</h4>
+                    <h4 class="text-center">Создайте файл</h4>
                     <form class="card-form" @submit.prevent="createTask">
                         <div class = "input">
-                            <input type="text" class="input-field" v-model="user.email">
-                            <label class = "input-label">Login</label>
+                            <input type="text" class="input-field" v-model="user.name">
+                            <label class = "input-label">Name</label>
                         </div>
                         <div class = "input">
-                            <input type="text" class="input-field" v-model="user.new_password">
-                            <label class = "input-label" for="">Password</label>
+                            <input type="text" class="input-field" v-model="user.surname">
+                            <label class = "input-label" for="">Surname</label>
+                        </div>
+                        <div class = "input">
+                            <input type="text" class="input-field" v-model="user.age">
+                            <label class = "input-label" for="">Age</label>
                         </div>
                         <div class="action">
-                            <button class="action-button" type="submit">Добавить</button>
+                            <button class="action-button" type="submit">Создать</button>
                         </div>    
                     </form>
                 </div>
