@@ -32,7 +32,7 @@ def task5_create():
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
-    return redirect(url_for('task5.index')) 
+    
 
 
 

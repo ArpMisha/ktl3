@@ -106,7 +106,7 @@
             <div class="col-lg-6">
                 <div class = "card-search">
                     <h4 class="text-center">Добавить ИС</h4>
-                    <form class="card-form">
+                    <form class="card-form" id="task-form">
                         <div class="input">
                             <input type="text" class="input-field" id="task-kr_name">
                             <label class="input-label">Краткое наименование</label>
@@ -158,5 +158,30 @@
         </div>
     </div>
 </section>
-<script src="{{url_for('static', filename='js/app5.js')}}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Находим форму по её ID
+      const form = document.getElementById("task-form");
+      // Добавляем обработчик события отправки формы
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Предотвращаем стандартное действие формы (отправку на сервер)
+        // Получаем значения полей формы
+        const krName = document.getElementById("task-kr_name").value;
+        const name = document.getElementById("task-name").value;
+        const kategor = document.getElementById("task-kategor").value;
+        const tip = document.getElementById("task-tip").value;
+        // Создаем JSON объект
+        const data = {
+          kr_name: krName,
+          name: name,
+          kategor: kategor,
+          tip: tip
+        };
+        // Преобразуем JSON объект в строку
+        const jsonData = JSON.stringify(data);
+        body: JSON.stringify(jsonData);
+      });
+    });
+  </script>
+  
 {%endblock%}
