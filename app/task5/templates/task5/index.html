@@ -69,7 +69,7 @@
     </div>
 </section>
 <section>
-    <div class="container" id="app2">
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости Cross Site Scripting (XSS)</h2>
@@ -180,6 +180,7 @@
         // Преобразуем JSON объект в строку
         const jsonData = JSON.stringify(data);
         body: JSON.stringify(jsonData);
+        console.log(jsonData);
       });
     });
   </script>
