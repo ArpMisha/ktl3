@@ -179,9 +179,24 @@
         };
         // Преобразуем JSON объект в строку
         const jsonData = JSON.stringify(data);
-        console.log(jsonData);
-      });
-    });
+        // Отправляем JSON данные на сервер с помощью Fetch API
+        fetch(window.location + '_create', {
+        method: 'POST', // Метод запроса
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest' // Устанавливаем заголовок для JSON данных
+        },
+        body: jsonData // Передаем JSON данные как тело запроса
+        })
+        .then(response => response.json()) // Преобразуем ответ сервера в JSON формат
+        .then(data => {
+        console.log('Сервер ответил:', data);
+        // Здесь вы можете выполнить дополнительную обработку ответа сервера, если необходимо
+        })
+        .catch(error => {
+        console.error('Произошла ошибка:', error);
+        });
+        });
   </script>
   
 {%endblock%}
