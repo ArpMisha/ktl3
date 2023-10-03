@@ -9,52 +9,81 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color1 mb-5">Описание проблемы использования уязвимых компонент</h2>
+                <h2 class="text-center text-uppercase color2 mb-5">Описание уязвимости Cross Site Scripting (XSS)</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-lg-12">
+                <p><b>Cross-Site Scripting (XSS)</b> - это тип веб-атаки, который позволяет злоумышленнику внедрить вредоносный скрипт (обычно JavaScript) на веб-страницу и запустить его на компьютерах других пользователей, когда они просматривают эту страницу. XSS является одной из самых распространенных уязвимостей веб-приложений.</p>
+                <p>Уязвимость XSS возникает, когда входные данные, полученные от пользователя, не достаточно проверяются или очищаются перед отображением на веб-странице. Это позволяет злоумышленнику внедрить вредоносный код, который выполняется в контексте браузера жертвы и может делать различные вредоносные действия, такие как кража сеансовых данных, перенаправление на фальшивые страницы, изменение содержимого страницы, получение личной информации и т.д.</p>
+                <p>Существует несколько типов XSS:</p>
+                <p>1. <b>Stored (постоянный) XSS:</b> Вредоносный скрипт сохраняется на сервере и отображается всем пользователям, которые просматривают определенную страницу. Например, злоумышленник может добавить вредоносный комментарий, который будет отображаться всем пользователям, читающим этот комментарий.</p>
+                <p>2. <b>Reflected (отраженный) XSS:</b> Вредоносный скрипт внедряется в URL или параметры запроса, а сервер возвращает его в браузер пользователя. Например, злоумышленник может отправить жертве фишинговую ссылку с вредоносным скриптом в параметрах запроса, который будет запущен при переходе по ссылке.</p>
+                <p>3. <b>DOM-based XSS:</b> В этом случае уязвимость возникает на стороне клиента при обработке данных на стороне клиента (в DOM - Document Object Model). Злоумышленник может модифицировать DOM-структуру страницы, что приводит к запуску вредоносных скриптов.</p>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <p>Для предотвращения уязвимостей XSS рекомендуется следующие меры:</p>
+                <ul>
+                    <li>Валидация и санитизация входных данных на серверной стороне.</li>
+                    <li>Использование безопасных методов для вставки динамических данных на страницу (например, методы, предоставляемые шаблонизаторами).</li>
+                    <li>Использование HTTP заголовка Content-Security-Policy (CSP), чтобы ограничить источники, из которых можно загружать скрипты, стили и другой контент.</li>
+                    <li>Установка флага "HttpOnly" для сеансовых куки, чтобы предотвратить доступ к ним из скриптов на стороне клиента.</li>
+                    <li>Установка флага "Secure" для сеансовых куки, чтобы их можно было передавать только по защищенному (HTTPS) соединению.</li>
+                  </ul>
+                <p>Безопасность веб-приложений является критически важным аспектом, и все разработчики должны быть осведомлены о возможных уязвимостях и методах их предотвращения.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <p><b>CSRF (Cross-Site Request Forgery)</b> — это вид атаки на веб-приложения, при которой злоумышленник заставляет авторизованного пользователя выполнять нежелательные действия на веб-сайте без его согласия. Атаки CSRF могут привести к различным негативным последствиям, таким как изменение данных пользователя, смена пароля, выполнение финансовых операций и другие действия, которые могут навредить как пользователям, так и владельцам веб-сайта.</p>
-                <p>Основной механизм атаки CSRF заключается в том, что <b>злоумышленник создает поддельный запрос</b> (например, ссылку или форму), который отправляется на веб-сайт от имени жертвы. Если жертва авторизована на веб-сайте, браузер выполнит этот запрос, даже если пользователь не осознает этого. В результате, злоумышленник может выполнить определенные действия от имени жертвы.</p>
-                <p><b>Для защиты от атак CSRF,</b> разработчики веб-приложений могут использовать различные методы, такие как добавление случайного токена <b>(CSRF-токена)</b> к каждому запросу, проверка источника запроса, установка SameSite-контроля для файлов cookie и другие меры безопасности. Эти методы помогают предотвратить успешные атаки CSRF и обеспечивают безопасность веб-приложений.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div style="text-align: center;">
-                    <img src="{{ url_for('static', filename='img/04.png') }}" width="800" height="500" style="display: inline-block;">
-                </div>
+                <pre>
+                    <code>
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="comment">В части кода ниже представлена уязвимость типа <b>Stored (постоянный) XSS.</b></span>
+                        <span class="comment">-------------------------------------------</span>
+                        &lt;tbody v-for="task, index in tasks" :key="index"&gt;
+                            &lt;td v-html="task.kr_name"&gt;&lt;/td&gt;
+                            &lt;td v-html="task.name"&gt;&lt;/td&gt;
+                            &lt;td v-html="task.kategor"&gt;&lt;/td&gt;
+                            &lt;td v-html="task.tip"&gt;&lt;/td&gt;
+                        &lt;/tbody&gt;
+                        <span class="comment">-------------------------------------------</span>
+                        <span class="keyword">Код <b>&lt;td v-html="task.kr_name"&gt;&lt;/td&gt;</b> предполагает использование Vue.js - популярного JavaScript-фреймворка
+                        для создания интерактивных пользовательских интерфейсов. В данном случае, это директива v-html, 
+                        которая является одной из особенностей Vue.js, используется для вставки HTML-кода внутрь элемента.</span>
+                            
+                        <span class="keyword">Давайте разберем этот код по частям:</span>
+                        <span class="keyword"><b>ч&lt;td&gt;</b>: Это элемент HTML, представляющий ячейку таблицы (table cell).</span>
+                        <span class="keyword"><b>v-html="task.kr_name":</b> Это Vue.js директива v-html, которая связывает содержимое ячейки (&lt;td&gt;) 
+                        с выражением task.kr_name. task.kr_name предполагается, что это переменная из объекта task, 
+                        содержащая некоторый HTML-код.</span>
+
+                        <span class="keyword">Суть этого кода заключается в том, что содержимое ячейки будет установлено в HTML-код, 
+                        который содержится в переменной task.kr_name. Однако, необходимо быть осторожным при использовании v-html, 
+                        так как это может представлять уязвимость XSS, если переменная <b>task.kr_name</b> содержит ненадежный или 
+                        несанитарный HTML-код.</span>
+                        
+                    </code>
+                </pre>  
             </div>
         </div>
     </div>
 </section>
-
-
 <section>
-    <div class="container" id="app5">
+    <div class="container" id="app2">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-center text-uppercase color1 mb-5">Пример использования компоненты с уязвимостью</h2>
+                <h2 class="text-center text-uppercase color1 mb-5">Пример уязвимости Cross Site Scripting (XSS)</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <pre>
                     <code style="background-color: #eee;">
-                        <span class="keyword">Ниже приведен код для реализации уязвимости Clickjacking  </span>
-                        <span class="comment">-------------------------------------------</span>
-                        <span class="keyword">&lt;iframe&gt; (Inline Frame) - это HTML-элемент, который используется для вставки веб-страницы или другого документа
-                        внутри текущего документа. Он позволяет встраивать веб-контент, такой как другие веб-страницы, видео, карты и т.д., 
-                        прямо в вашу страницу.</span>
-                        <span class="comment">-------------------------------------------</span>
-                        <span class="keyword">Мы создадим другую страницу с завлекающим контентом, а в &lt;iframe&gt; укажем ссылку на нашу страницу <b>URI=/test4</b></span>
-                        <span class="keyword">Ниже представлен код "обманной" страницы</span>
-                        <span class="comment">-------------------------------------------</span>
-                        <span class="string">&lt;iframe <b>src="http://10.10.102.119:81/task4"</b>&lt;/iframe&gt; <span class="comment">// в iframe указана ссылка на страницу жертву</span>
-                        &lt;button&gt;<span class="keyword">Click to Win</span>&lt;/button&gt;</span> <span class="comment">// обманная кнопка, реализующая удаление пользователя</span>
-                        <span class="comment">-------------------------------------------</span>
-                        <span class="keyword">Нажмите на кнопку, чтобы посмотреть как реализуется код выше. 
-                        Уточнение - в этом коде не представлены стили css, которые реализуют прозрачность страницы</span>
+                        <span class="keyword">Для эксплуатации уязвимости необходимо создать ИС и в одно из полей форм ("Полное наименование") добавить ссылку <b>&lt;а&gt;</b>  с уязвимый js кодом 
+                        <b>&lt;a onmouseover=alert(document.cookie)&gt;click me!&lt;/a&gt;</b>, также укажите "Краткое наименование", например <b>1С</b> для быстрого поиска ИС</span>
+
+                        <span class="keyword">При наведении мышки пользователя сайта, реализуемое атрибутом <b>onmouseover</b> будет вызывана функцию <b>alert</b>, 
+                        которая выводит содержимое <b>cookie (куки)</b> текущей страницы во всплывающем окне предупреждения.</span>
                     </code>
                 </pre>
             </div>
@@ -62,28 +91,71 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class = "card-search">
-                    <h4 class="text-center">Создайте файл</h4>
-                    <form class="card-form" @submit.prevent="createTask">
-                        <div class = "input">
-                            <input type="text" class="input-field" v-model="user.name">
-                            <label class = "input-label">Name</label>
-                        </div>
-                        <div class = "input">
-                            <input type="text" class="input-field" v-model="user.surname">
-                            <label class = "input-label" for="">Surname</label>
-                        </div>
-                        <div class = "input">
-                            <input type="text" class="input-field" v-model="user.age">
-                            <label class = "input-label" for="">Age</label>
+                    <h4 class="text-center">Поиск ИС</h4>
+                    <form class="card-form">
+                        <div class="input">
+                            <input type="text" class="input-field" id="search-kr_name">
+                            <label class="input-label">Краткое наименование</label>
                         </div>
                         <div class="action">
-                            <button class="action-button" type="submit">Создать</button>
-                        </div>    
+                            <button class="action-button" type="submit">Поиск</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class = "card-search">
+                    <h4 class="text-center">Добавить ИС</h4>
+                    <form class="card-form">
+                        <div class="input">
+                            <input type="text" class="input-field" id="task-kr_name">
+                            <label class="input-label">Краткое наименование</label>
+                        </div>
+                        <div class="input">
+                            <input type="text" class="input-field" id="task-name">
+                            <label class="input-label">Полное наименование</label>
+                        </div>
+                        <div class="input">
+                            <select id="task-kategor">
+                                <option>К</option>
+                                <option>КТ</option>
+                                <option>ПНд</option>
+                            </select>
+                            <label class="input-label">Категория обрабатываемой информации</label>
+                        </div>
+                        <div class="input">
+                            <select id="task-tip">
+                                <option>локальная</option>
+                                <option>корпоративная</option>
+                            </select>
+                            <label class="input-label">Тип обрабатываемой информации</label>
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type="submit">добавить</button>
+                        </div>   
                     </form>
                 </div>
             </div>
         </div>
-        <div class="row"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Краткое наименование</th>
+                                <th scope="col">Полное наименование</th>
+                                <th scope="col">Категория обрабатываемой информации</th>
+                                <th scope="col">Тип обрабатываемой информации</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Task data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <script src="{{url_for('static', filename='js/app5.js')}}"></script>

@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: Пример OpenAPI-схемы
+  version: 1.0.0
+paths:
+  /task_search:
+    post:
+      summary: Получить JSON-файл с массивом объектов
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: Уникальный идентификатор
+                    kr_name:
+                      type: string
+                      description: Краткое наименование
+                    name:
+                      type: string
+                      description: Полное наименование
+                    kategor:
+                      type: string
+                      description: Категория
+                    tip:
+                      type: string
+                      description: Тип
+                    naznach:
+                      type: string
+                      description: Назначение
+                    data_vvoda:
+                      type: null
+                      description: Дата ввода
+                    zakazchik:
+                      type: null
+                      description: Заказчик
+                    data_ib:
+                      type: null
+                      description: Дата последнего проведения ИБ ИС
+                    primech:
+                      type: null
+                      description: Примечание
+              example:
+                - id: 1
+                  kr_name: "1C"
+                  name: "1С Предприятие"
+                  kategor: "K"
+                  tip: "локальная"
+                  naznach: null
+                  data_vvoda: null
+                  zakazchik: null
+                  data_ib: null
+                  primech: null
+                - id: 2
+                  kr_name: "1C"
+                  name: "1C full"
+                  kategor: "КТ"
+                  tip: "локальная"
+                  naznach: null
+                  data_vvoda: null
+                  zakazchik: null
+                  data_ib: null
+                  primech: null
+            
