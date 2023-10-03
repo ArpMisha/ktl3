@@ -32,6 +32,7 @@ def task5_create():
         db.session.add(task)
         db.session.commit()
         return jsonify(task)
+    return render_template('task5/index.html')
     
 
 
