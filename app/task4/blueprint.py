@@ -9,7 +9,7 @@ from .forms import UserForm
 task4 = Blueprint('task4', __name__, template_folder='templates')
 
 @task4.route('/task4')
-@login_required
+#@login_required
 def index():
     username = current_user.email
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -18,7 +18,7 @@ def index():
 
 
 @task4.route('/task4_delete', methods=['POST'])
-@login_required
+#@login_required
 def delete_user():
     username = request.get_json().get('username')
     users = models.User.query.filter(models.User.email==username).first()

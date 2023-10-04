@@ -1,85 +1,133 @@
 openapi: 3.0.0
 info:
-  title: Task API
-  version: 1.0
-  description: API for managing tasks
+  title: API
+  version: 1.0.0
 paths:
-  /task_create:
+  /task_search:
     post:
-      summary: Create a new task
+      summary: Отправить данные
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
-                  description: Уникальный идентификатор
                 kr_name:
                   type: string
-                  description: Краткое наименование
-                name:
-                  type: string
-                  description: Полное наименование
-                kategor:
-                  type: string
-                  description: Категория
-                tip:
-                  type: string
-                  description: Тип
-                naznach:
-                  type: string
-                  description: Назначение
-                data_vvoda:
-                  type: null
-                  description: Дата ввода
-                zakazchik:
-                  type: null
-                  description: Заказчик
-                data_ib:
-                  type: null
-                  description: Дата последнего проведения ИБ ИС
-                primech:
-                  type: null
-                  description: Примечание
-              required:
-                - id
-                - kr_name
-                - name
-                - kategor
-                - tip
-                - naznach
-                - data_vvoda
-                - zakazchik
-                - data_ib
-                - primech
+                  description: Данные из формы
       responses:
         '200':
           description: Task created successfully
           content:
             application/json:
               schema:
+                $ref: "#/components/schemas/tasks"
+  /task2_create:
+    post:
+        summary: Отправить данные
+        requestBody:
+          content:
+            application/json:
+              schema:
                 type: object
                 properties:
-                  id:
-                    type: integer
                   kr_name:
                     type: string
-                    name:
+                    description: Данные из формы
+                  name:
+                    type: string
+                    description: Данные из формы
+                  kategor:
+                    type: string
+                    description: Данные из формы
+                  tip:
+                    type: string
+                    description: Данные из формы
+        responses:
+          '200':
+            description: Task created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/task"
+  /task2_search:
+       post:
+        summary: Отправить данные
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kr_name:
+                    type: string
+                    description: Данные из формы
+        responses:
+          '200':
+            description: Task created successfully
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/tasks"
+  
+  /task3_search:
+      post:
+        summary: Отправить данные
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Данные из формы
+        responses:
+          '200':
+            description: Task created successfully
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    info:
                       type: string
-                    kategor:
-                      type: string
-                    tip:
-                      type: string
-                    naznach:
-                      type: string
-                    data_vvoda:
-                      type: null
-                    zakazchik:
-                      type: null
-                    data_ib:
-                      type: null
-                    primech:
-                      type: null
-
+                      description: Данные из формы
+components:
+  schemas:
+    task:
+      type: object
+      required:
+        - id
+        - kr_name
+        - name
+        - kategor
+        - tip
+      properties:
+        id:
+          type: integer
+          description: Уникальный идентификатор
+        kr_name:
+          type: string
+          description: Краткое наименование
+        name:
+          type: string
+          description: Полное наименование
+        kategor:
+          type: string
+        tip:
+          type: string
+        naznach:
+          type: string
+        data_vvoda:
+          type: string
+        zakazchik:
+          type: string
+        data_ib:
+          type: string
+        primech:
+          type: string
+    tasks:
+      type: array
+      items:
+        $ref: "#/components/schemas/task"
