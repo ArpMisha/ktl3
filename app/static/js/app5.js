@@ -84,4 +84,4 @@ document.getElementById("search-form").addEventListener("submit", function (e) {
         // Обработка ошибок
         console.error(error);
     });
-});
+})
