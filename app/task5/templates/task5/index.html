@@ -224,22 +224,23 @@
             }
             throw new Error("Ошибка сети");
         })
-    .then(function (data) {
+        .then(function (data) {
             // Обработка успешного ответа и вывод данных в таблицу
             var tableBody = document.getElementById("table-body");
             tableBody.innerHTML = ""; // Очистка таблицы
 
-            var row = document.createElement("tr");
+            data.forEach(function (item) {
+                var row = document.createElement("tr");
+                var keys = ["kr_name", "name", "kategor", "tip"];
 
-            for (var key in data) {
-                if (data.hasOwnProperty(key)) {
+                keys.forEach(function (key) {
                     var cell = document.createElement("td");
-                    cell.textContent = data[key];
+                    cell.textContent = item[key];
                     row.appendChild(cell);
-                }
-            }
+                });
 
-            tableBody.appendChild(row);
+                tableBody.appendChild(row);
+            });
         })
         .catch(function (error) {
             // Обработка ошибок
