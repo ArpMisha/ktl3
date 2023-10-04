@@ -235,7 +235,7 @@
 
                 keys.forEach(function (key) {
                     var cell = document.createElement("td");
-                    cell.textContent = item[key];
+                    cell.innerHTML = item[key];
                     row.appendChild(cell);
                 });
 
