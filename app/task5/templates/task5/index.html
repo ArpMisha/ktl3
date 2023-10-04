@@ -92,7 +92,7 @@
             <div class="col-lg-6">
                 <div class = "card-search">
                     <h4 class="text-center">Поиск ИС</h4>
-                    <form class="card-form">
+                    <form class="card-form" id="search-form">
                         <div class="input">
                             <input type="text" class="input-field" id="search-kr_name">
                             <label class="input-label">Краткое наименование</label>
@@ -149,8 +149,7 @@
                                 <th scope="col">Тип обрабатываемой информации</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Task data will be populated here -->
+                        <tbody id="table-body">
                         </tbody>
                     </table>
                 </div>
@@ -195,6 +194,57 @@
         .catch(error => {
         console.error('Произошла ошибка:', error);
         });
+        });
+    });
+</script>
+
+<script>
+    document.getElementById("search-form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+        // Получаем значение поля ввода
+        var krName = document.getElementById("search-kr_name").value;
+
+        // Создаем объект JSON с данными
+        var data = {
+            krName: krName
+        };
+
+        // Отправляем POST-запрос
+        fetch(window.location + '_search', {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Ошибка сети");
+        })
+        .then(function (data) {
+            // Обработка успешного ответа и вывод данных в таблицу
+            var tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = ""; // Очистка таблицы
+
+            data.forEach(function (item) {
+                var row = document.createElement("tr");
+                var keys = ["kr_name", "name", "kategor", "tip"];
+
+                keys.forEach(function (key) {
+                    var cell = document.createElement("td");
+                    cell.textContent = item[key];
+                    row.appendChild(cell);
+                });
+
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(function (error) {
+            // Обработка ошибок
+            console.error(error);
         });
     });
 </script>
