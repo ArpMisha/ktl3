@@ -6,12 +6,18 @@
         "DataFlowAnalysis",
         "PatternMatching",
         "Components",
-        "Configuration"
+        "Configuration",
+        "BlackBox"
     ],
     "UsePublicAnalysisMethod": false,
     "SkipGitIgnoreFiles": true,
     "DownloadDependencies": true,
     "BlackBoxSettings": {
-        "Site": "http://10.10.102.119:81"
+        "AdditionalHttpHeaders": [{"Key": "cache-control", "Value": "no-cache"}],
+        "Level": "Normal",
+        "RunAutocheckAfterScan": true,
+        "ScanScope": "Folder",
+        "Site": "http://10.10.102.119:81",
+        "SslCheck": false
     }
 }
