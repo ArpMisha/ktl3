@@ -73,7 +73,8 @@
                         <span class="string"><b>' ; SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'; --</b></span>
                         <span class="comment">-------------------------------------------</span> 
                         <span class="comment">// команда ниже выведет все значения таблицы <b>User</b></span>
-                        <span class="string"><b>' ; SELECT * FROM User; --</b></span>
+                        <span class="string" ><b>' ; SELECT * FROM User; --</b></span>
+                        <button onclick="copyText()">Копировать</button>
                         <span class="comment">-------------------------------------------</span> 
                     </code>
                 </pre>
@@ -152,5 +153,17 @@
         </div>
     </div>
 </section>
+<script>
+    function copyText() {
+        var textToCopy = document.querySelector(".string b").textContent;
+        var textarea = document.createElement("textarea");
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("Текст скопирован в буфер обмена: " + textToCopy);
+    }
+</script>
 <script src="{{url_for('static', filename='js/app.js')}}"></script>
 {%endblock%}
