@@ -1,0 +1,17 @@
+{
+    "ProjectName": "ktl3",
+    "ProgrammingLanguage": "Python",
+    "ScanModules": [
+        "VulnerableSourceCode",
+        "DataFlowAnalysis",
+        "PatternMatching",
+        "Components",
+        "Configuration"
+    ],
+    "UsePublicAnalysisMethod": false,
+    "SkipGitIgnoreFiles": true,
+    "DownloadDependencies": true,
+    "BlackBoxSettings": {
+        "Site": "http://10.10.102.119:81"
+    }
+}

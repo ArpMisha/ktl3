@@ -40,16 +40,23 @@ paths:
                   kategor:
                     type: string
                     description: Данные из формы
+                    enum:
+                      - К
+                      - КТ
+                      - ПНд
                   tip:
                     type: string
                     description: Данные из формы
+                    enum:
+                      - локальная
+                      - корпоративная
         responses:
           '200':
             description: Task created successfully
             content:
               application/json:
                 schema:
-                  $ref: "#/components/schemas/task"
+                  $ref: "#/components/schemas/tasks"
   /task2_search:
        post:
         summary: Отправить данные
@@ -68,7 +75,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: "#/components/schemas/tasks"
+                  $ref: "#/components/schemas/task"
   
   /task3_search:
       post:
@@ -115,8 +122,15 @@ components:
           description: Полное наименование
         kategor:
           type: string
+          enum:
+            - К
+            - КТ
+            - ПНд
         tip:
           type: string
+          enum:
+          - локальная
+          - корпоративная
         naznach:
           type: string
         data_vvoda:
