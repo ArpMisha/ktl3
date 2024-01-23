@@ -10,13 +10,13 @@ from datetime import datetime
 
 task = Blueprint('task', __name__, template_folder='templates')
 
-@task.route('/task')
+#@task.route('/task')
 #@login_required
-def index():
-    tasks = models.iss.query.all()
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        return jsonify(tasks)
-    return render_template('task/index.html')
+#def index():
+#    tasks = models.iss.query.all()
+#    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+#        return jsonify(tasks)
+#    return render_template('task/index.html')
 
 @task.route('/task_create', methods=['POST'])
 #@login_required
