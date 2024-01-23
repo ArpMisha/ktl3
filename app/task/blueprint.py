@@ -18,17 +18,17 @@ task = Blueprint('task', __name__, template_folder='templates')
 #        return jsonify(tasks)
 #    return render_template('task/index.html')
 
-@task.route('/task_create', methods=['POST'])
+#@task.route('/task_create', methods=['POST'])
 #@login_required
-def task_create():
-    user_input = request.get_json()
-    form = IsForm(data=user_input)
-    if form.validate():
-        task = models.iss(kr_name = form.kr_name.data, name = form.name.data, kategor = form.kategor.data, tip = form.tip.data)
-        db.session.add(task)
-        db.session.commit()
-        return jsonify(task)
-    return redirect(url_for('task.index')) 
+#def task_create():
+#    user_input = request.get_json()
+#    form = IsForm(data=user_input)
+#    if form.validate():
+#        task = models.iss(kr_name = form.kr_name.data, name = form.name.data, kategor = form.kategor.data, tip = form.tip.data)
+#        db.session.add(task)
+#        db.session.commit()
+#        return jsonify(task)
+#    return redirect(url_for('task.index')) 
 
 
 @task.route('/task_search', methods=['POST'])
