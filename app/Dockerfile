@@ -2,9 +2,8 @@ FROM python:3.9 as test_layer
 
 WORKDIR /app1
 COPY test.py /app1/
-COPY start.sh /app1/
-RUN chmod +x /app1/start.sh
-CMD ["bash", "/app1/start.sh"]
+RUN chmod +x /app1/test.py
+ENTRYPOINT ["python", "/app1/test.py"]
 
 FROM python:3.9 as final_stage
 WORKDIR /app
@@ -14,3 +13,5 @@ RUN pip install --upgrade pip &&  python -m pip install -r requirements.txt
 
 EXPOSE 5000
 COPY . /app
+
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
