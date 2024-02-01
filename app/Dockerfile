@@ -3,6 +3,7 @@ FROM python:3.9 as test_layer
 WORKDIR /app1
 COPY test.py /app1/
 COPY start.sh /app1/
+RUN chmod +x /app1/start.sh
 CMD ["bash", "/app1/start.sh"]
 
 FROM python:3.9 as final_stage
