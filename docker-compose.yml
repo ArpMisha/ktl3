@@ -11,6 +11,7 @@ services:
       - 5000
     depends_on:
       - db
+
   db:
     build: ./db
     container_name: db-1
@@ -20,6 +21,7 @@ services:
       - POSTGRES_DB=ktl_db
     volumes:
       - ./db/scripts:/data
+  
   nginx:
     build: ./nginx
     container_name: nginx-1
@@ -27,5 +29,4 @@ services:
       - 81:81
     depends_on:
       - app
-  
 
